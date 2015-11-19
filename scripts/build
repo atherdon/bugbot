@@ -1,2 +1,3 @@
 #!/bin/sh
-babel src --out-dir dist
+babel=./node_modules/babel-cli/bin/babel.js
+$babel src --out-dir dist

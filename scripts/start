@@ -1,6 +1,7 @@
 #!/bin/sh
+bnode=./node_modules/babel-cli/bin/babel-node.js
 if [[ -z "$NODE_ENV" ]]; then
-  babel-node src/index
+  $bnode src/index
 else
   npm run build && node dist/index
 fi
