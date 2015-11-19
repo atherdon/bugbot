@@ -1,0 +1,6 @@
+#!/bin/sh
+if [[ -z "$NODE_ENV" ]]; then
+  babel-node src/index
+else
+  npm run build && node dist/index
+fi
