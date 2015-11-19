@@ -4,9 +4,9 @@
   "description": "Slack native Github Issues",
   "main": "dist/index.js",
   "scripts": {
-    "start": "babel-node src/index",
-    "build": "babel src --out-dir dist",
-    "test": "npm run build && babel-node test/*.* | tap-spec"
+    "start": "./scripts/start",
+    "build": "./scripts/build",
+    "test": "./scripts/test"
   },
   "author": "Small Wins",
   "license": "Apache-2.0",
