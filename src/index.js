@@ -13,8 +13,11 @@ bb.get('/bugbot', (req, res)=> {
 export default bb
 
 if (require.main === module) {
-  bb.listen(3000, x=> {
-    console.log('#!/bugbot> http://localhost:3000')
+  let port = process.env.PORT || 3000
+  bb.listen(port, x=> {
+    if (!process.env.NODE_ENV) {
+      console.log(`#!/bugbot> http://localhost:${port}`)
+    }
   })
 }
 
