@@ -12,7 +12,7 @@ bb.get('/bugbot', (req, res)=> {
 
 // recives a slash command
 bb.post('/bugbot', (req, res)=> {
-  res.status(200).end()
+  res.status(200).json({text:'hey it worked'})
 })
 
 bb.get('/bugbot/auth', auth)
