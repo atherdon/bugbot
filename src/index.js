@@ -1,39 +1,25 @@
-import express from 'express'
-import parser from 'body-parser'
-import logger from 'morgan'
-import chalk from 'chalk'
-
-let bb = express()
-bb.set('views', './src/views')
-bb.set('view engine', 'ejs')
-bb.use(logger('dev'))
-bb.use(parser.json())
-bb.use(parser.urlencoded({extended:true}))
-bb.use(express.static('./src/public'))
+import bb from './config'
+import auth from './middleware/slack-auth'
 
 bb.get('/', (req, res)=> {
   res.redirect('/bugbot')
 })
 
+// shows the description page
 bb.get('/bugbot', (req, res)=> {
   res.render('index')
 })
 
-bb.get('/bugbot/auth', (req, res)=> {
-  // req.query.code
-  res.end('auth success/fail page here')
+// recives a slash command
+bb.post('/bugbot', (req, res)=> {
+  res.status(200).end()
 })
 
-export default bb
+bb.get('/bugbot/auth', auth)
 
 if (require.main === module) {
-  let port = process.env.PORT || 3000
-  bb.listen(port, x=> {
-    if (!process.env.NODE_ENV) {
-      let msg = chalk.green('#!/bugbot> ')
-      let url = chalk.underline.cyan(`http://localhost:${port}`)
-      console.log(`${msg} ${url}`)
-    }
-  })
+  bb.start()
 }
+
+export default bb
 

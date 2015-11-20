@@ -1,7 +1,11 @@
 import test from 'tape'
+import async from 'async'
+import request from 'request'
 import bot from '../'
 
-let handler;
+let handler
+let port = 3333
+let base = `http://localhost:${port}`
 
 test('sanity', t=> {
   t.ok(bot, 'there is bot')
@@ -11,8 +15,59 @@ test('sanity', t=> {
 
 test('bot server starts', t=> {
   t.plan(1)
-  handler = bot.listen(3333, x=> {
-    t.ok('wtf', 'server started')
+  handler = bot.listen(port, x=> {
+    t.ok(true, `server started @ ${base}`)
+    t.end()
+  })
+})
+
+// this test looks crazier than it is
+// the first object is the entire thing
+test('bot routes are legit', t=> {
+  let routesAndExpectedStatusCode = {
+    '/bugbot':200,
+    '/bugbot/auth?code=blah':200,
+    '/bugbot/auth?error=access_denied':403
+  }
+  let routes = Object.keys(routesAndExpectedStatusCode)
+  // we plan to have one test per route plus one for completion
+  t.plan(routes.length + 1) 
+  // generate an array of tests for each route
+  let tests = routes.map(route=> {
+    return function botTest(done) {
+      request.get(`${base}${route}`, (err, res)=> {
+        if (err) {
+          t.fail(err, err)
+          done(err)
+        }
+        else {
+          t.equals(res.statusCode, routesAndExpectedStatusCode[route], 'status matched')
+          done()
+        }
+      })
+    }
+  })
+  // run the generated tests in parallel to completion 
+  async.parallel(tests, (err, results)=> {
+    if (err) {
+      t.fail(err, err)
+    }
+    else {
+      t.ok(results, 'routes match expected status codes')
+    }
+    t.end()
+  })
+})
+
+test('bot can recieve a POST from Slack', t=> {
+  request.post(`${base}/bugbot`, (err, res)=> {
+    t.plan(1)
+    if (err) {
+      t.fail(err, err)
+    }
+    else {
+      t.equals(res.statusCode, 200, 'POST was 200')
+    }
     t.end()
   })
 })
