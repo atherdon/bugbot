@@ -1,6 +1,6 @@
 import test from 'tape'
-import slack from '../../src/models/slack'
-import save from '../../src/models/slack-dynamo-save'
+import slack from '../../src/slack'
+import save from '../../src/slack/adapters/dynamo/save'
 
 test('sanity', t=> {
   t.plan(2)

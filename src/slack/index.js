@@ -1,9 +1,9 @@
 import req from 'request'
 import path from 'path'
 import env from 'node-env-file'
-import save from './slack-dynamo-save'
-import whoami from './slack-whoami'
-import api from './slack-call-api'
+import save from './adapters/dynamo/save'
+import whoami from './_whoami'
+import api from './_api'
 
 // registers an account
 function register(code, callback) {

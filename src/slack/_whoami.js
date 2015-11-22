@@ -1,4 +1,4 @@
-import api from './slack-call-api'
+import api from './_api'
 
 // get account info from slack
 //
