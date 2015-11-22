@@ -4,6 +4,7 @@
   "description": "Slack native Github Issues",
   "main": "dist/index.js",
   "scripts": {
+    "init": "./scripts/init",
     "start": "./scripts/start",
     "build": "./scripts/build",
     "test": "./scripts/test"
@@ -11,11 +12,13 @@
   "author": "Small Wins",
   "license": "Apache-2.0",
   "devDependencies": {
+    "node-env-file": "^0.1.8",
     "tap-spec": "^4.1.0",
     "tape": "^4.2.2"
   },
   "dependencies": {
     "async": "^1.5.0",
+    "aws-sdk": "^2.2.18",
     "babel-cli": "^6.1.18",
     "babel-preset-es2015": "^6.1.18",
     "body-parser": "^1.14.1",
@@ -25,6 +28,7 @@
     "express": "^4.13.3",
     "express-session": "^1.12.1",
     "morgan": "^1.6.1",
+    "node-env-file": "^0.1.8",
     "request": "^2.67.0",
     "tape": "^4.2.2"
   }

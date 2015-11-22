@@ -1,0 +1,4 @@
+#!/bin/sh
+export AWS_REGION=us-east-1
+babel=./node_modules/babel-cli/bin/babel-node.js
+$babel src/models/slack-dynamo-init
