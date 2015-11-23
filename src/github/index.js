@@ -17,5 +17,4 @@ export default {
   token,
   register,
   repos, 
-  issues
-}
+  issues}

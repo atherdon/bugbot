@@ -59,6 +59,7 @@ test('get access token with code', t=> {
   }
 })
 
+
 test('can get repos', t=> {
   t.plan(1)
   github.repos(process.env.TOKEN, (err, repos)=> {
@@ -81,7 +82,7 @@ test('can get issues for repo', t=> {
     }
     else {
       t.ok(issues, 'got issues')
-      console.log(issues)
+      console.log(issues.length, issues.map(i=>`${i.number} ${i.title}`))
     }
     t.end()
   })

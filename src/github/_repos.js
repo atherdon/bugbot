@@ -30,13 +30,16 @@ function getOrgs(token, callback) {
 function getRepos(token, uri, callback) {
   let headers = head(token)
   request.get({uri, headers, json}, (err, res)=> {
-    callback(null, res.body.map(r=>r.full_name))
+    if (err) {
+      callback(err)
+    }
+    else {
+      callback(null, res.body.map(r=>r.full_name))
+    }
   })
 }
 
-
-export default function repos(token, callback) {
-  // first grab user account repos
+function getAccount(token, callback) {
   let uri = 'https://api.github.com/user'
   let headers = head(token)
   request.get({uri, headers, json}, (err, res)=> {
@@ -44,32 +47,25 @@ export default function repos(token, callback) {
       callback(err)
     }
     else {
-      // add those repos to the list of repos
-      let uri = res.body.repos_url
-      let reposToFetch = []
-      reposToFetch.push(uri)
-
-      // now grab all the ors
-      // FIXME this could be parallel
-      getOrgs(token, (err, orgs)=> {
-        if (err) {
-          callback(err)
-        }
-        else {
-
-          // now grab all the repos for the orgs and user account
-          let repos = reposToFetch.concat(orgs)
-          let iter = (repo, cb)=> getRepos(token, repo, cb)
-          async.map(repos, iter, (err, unflat)=> {
-            if (err) {
-              callback(err)
-            }
-            else {
-              callback(null, _.flatten(unflat))
-            }
-          })
-        }
-      })
+      callback(null, res.body.repos_url)
     }
   })
 }
+
+function repos(token, callback) {
+  let r = cb=>getAccount(token, cb)
+  let o = cb=>getOrgs(token, cb)
+  let i = (repo, cb)=> getRepos(token, repo, cb)
+  async.parallel([r, o], (err, repos)=> {
+    async.map(_.flatten(repos), i, (err, unflat)=> {
+      if (err) {
+        callback(err)
+      }
+      else {
+        callback(null, _.flatten(unflat))
+      }
+    })  
+  })
+}
+
+export default repos
