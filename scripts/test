@@ -1,4 +1,5 @@
 #!/bin/sh
-export AWS_REGION=us-east-1
-bnode=./node_modules/babel-cli/bin/babel-node.js
-npm run build && $bnode test/**/*-test.js | tap-spec 
+for f in ./test/*
+do
+  ./scripts/t $f
+done

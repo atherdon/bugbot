@@ -22,6 +22,7 @@ let json = true
 //   api('https://slack.com/api/api.test', 'fake-token', (err, data)=> {
 //     
 //   })
+//
 export default function api(url, tokenOrCode, callback) {
   let isCode = url === 'https://slack.com/api/oauth.access'
   let form = {client_id, client_secret}

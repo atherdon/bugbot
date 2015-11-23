@@ -16,6 +16,7 @@ function register(code, callback) {
       let token = json.access_token
       let scope = json.scope
       // use the token to get the user account info
+      // TODO configurable adapter (need to add a redis adapter for heroku deploys)
       whoami(token, save)      
     }
   })
