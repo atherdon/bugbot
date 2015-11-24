@@ -3,5 +3,5 @@ bnode=./node_modules/babel-cli/bin/babel-node.js
 if [[ -z "$NODE_ENV" ]]; then
   $bnode src/index
 else
-  node dist/index
+  ./scripts/build && node dist/index
 fi
