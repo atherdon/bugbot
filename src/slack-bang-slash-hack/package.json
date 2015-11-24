@@ -1,0 +1,5 @@
+{
+  "name":"slack-bang-slash-hack", 
+  "description":"#!/hack", 
+  "main":"./index.js"
+}
