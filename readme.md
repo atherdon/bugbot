@@ -19,3 +19,8 @@
 
     npm start
 
+## Deploy
+
+- Slack requires SSL.
+- TODO Heroku
+- TODO Beanstalk
