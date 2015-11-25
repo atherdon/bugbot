@@ -1,4 +1,6 @@
 #!/bin/sh
+./scripts/build
+
 for f in ./test/*
 do
   ./scripts/t $f
