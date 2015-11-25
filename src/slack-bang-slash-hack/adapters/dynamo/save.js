@@ -17,7 +17,7 @@ function save(params, callback) {
     let query = {TableName, Item}
     Object.keys(params).forEach(k=> {
       if (typeof params[k] === 'boolean') {
-        query.Item[k] = {B:params[k]}
+        query.Item[k] = {BOOL:params[k]}
       }
       else {
         query.Item[k] = {S:params[k]}
