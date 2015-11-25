@@ -22,6 +22,6 @@
 
 ## Deploy
 
-- Slack requires SSL.
+- Slack requires SSL. http://serverfault.com/questions/393822/how-do-i-install-intermediate-certificates-in-aws
 - TODO Heroku
 - TODO Beanstalk

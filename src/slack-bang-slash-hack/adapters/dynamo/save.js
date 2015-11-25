@@ -16,7 +16,12 @@ function save(params, callback) {
     let Item = {}
     let query = {TableName, Item}
     Object.keys(params).forEach(k=> {
-      query.Item[k] = {S:params[k]}
+      if (typeof params[k] === 'boolean') {
+        query.Item[k] = {B:params[k]}
+      }
+      else {
+        query.Item[k] = {S:params[k]}
+      }
     })
     dynamo.putItem(query, (err, result)=> {
       if (err) {
