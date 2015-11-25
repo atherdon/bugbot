@@ -11,6 +11,7 @@
   - `GITHUB_CLIENT_SECRET`
   - `SLACK_CLIENT_ID`
   - `SLACK_CLIENT_SECRET`
+  - `AWS_REGION` (if you are using the dynamo adapter)
 
 ### Run the tests
 
