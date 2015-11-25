@@ -43,9 +43,25 @@ function index(req, res, next) {
 // recives a slash command
 function slash(req, res, next) {
   let cmds = stack()
-  //slash(req.body, (err, msg)=> {
-    res.status(200).json({todo:'this', b:req.body, cmds})
-  //})
+  let sub = req.body.text.split(' ')
+  let cmd = `${req.body.command} ${sub}`.trim()
+  let ids = Object.keys(cmds)
+  let it = ids.filter(id=> id.indexOf(cmd) > -1)
+
+  if (it.length === 0) {
+    it = ids[0]
+  }
+  else {
+    it = it[0]
+  }
+
+  function done(msg) {
+    res.status(200).json(msg) 
+  }
+
+  cmds[it](req.body, done)
+
+  //res.status(200).json({b:req.body, l:ids.length} )
 }
 
 router.get('/', index)

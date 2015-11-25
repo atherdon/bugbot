@@ -3,28 +3,28 @@ import slack, {slash, start} from './slack-bang-slash-hack'
 // handler for the slack slash command: /bugbot
 slash('/bb', (payload, message)=> {
   message({
-    text: `got a message! ${JSON.stringify(payload)}`
+    text: `/bb got a message! ${JSON.stringify(payload)}`
   })
 })
 
 // handler for the slack slash command: /bugbot
 slash('/bb open', (payload, message)=> {
   message({
-    text: `got a message! ${JSON.stringify(payload)}`
+    text: `/bb open got a message! ${JSON.stringify(payload)}`
   })
 })
 
 // handler for the slack slash command: /bugbot
 slash('/bb list', (payload, message)=> {
   message({
-    text: `got a message! ${JSON.stringify(payload)}`
+    text: `/bb list got a message! ${JSON.stringify(payload)}`
   })
 })
 
 // handler for the slack slash command: /bugbot
 slash('/bb help', (payload, message)=> {
   message({
-    text: `got a message! ${JSON.stringify(payload)}`
+    text: `/bb help got a message! ${JSON.stringify(payload)}`
   })
 })
 

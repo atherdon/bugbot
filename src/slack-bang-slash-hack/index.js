@@ -12,7 +12,7 @@ export function slash(command, callback) {
   cmds[command] = callback
 }
 
-export function start(name='sbsh') {
+export function start(name='slack-app') {
   let port = process.env.PORT || 3000
   app.listen(port, x=> {
     if (!process.env.NODE_ENV) {
