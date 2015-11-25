@@ -27,7 +27,7 @@ test('bot server starts', t=> {
 test('bot routes are legit', t=> {
   let routesAndExpectedStatusCode = {
     '/bugbot':200,
-    '/bugbot/auth?code=blah':200,
+    '/bugbot/auth?code=blah':500,
     '/bugbot/auth?error=access_denied':403
   }
   let routes = Object.keys(routesAndExpectedStatusCode)
@@ -43,6 +43,7 @@ test('bot routes are legit', t=> {
         }
         else {
           t.equals(res.statusCode, routesAndExpectedStatusCode[route], 'status matched')
+          console.log(res.body)
           done()
         }
       })

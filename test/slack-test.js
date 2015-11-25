@@ -1,18 +1,16 @@
 import test from 'tape'
-import slack from '../src/slack-bang-slash-hack'
-//import save from '../../src/slack/adapters/dynamo/save'
+import save from '../src/slack-bang-slash-hack/adapters/dynamo/save'
+import register from '../src/slack-bang-slash-hack/methods/register'
 
-test('sanity', t=> {
+//test('sanity', t=> {
   //t.plan(2)
-  t.ok(slack, 'there is a slack')
+  //t.ok(slack, 'there is a slack')
   //t.ok(slack.register, 'there is a slack.register')
-  t.end()
-})
-
-/*
+  //t.end()
+//})
 test('cannot register with a bad code', t=> {
   t.plan(1)
-  slack.register('bad-code-here', (err, response)=> {
+  register('bad-code-here', (err, response)=> {
     t.equals(err, 'invalid_code', err)
     console.log(err, response)
     t.end()
@@ -33,4 +31,4 @@ test('can save a registration', t=> {
     }
     t.end()
   })
-})*/
+})

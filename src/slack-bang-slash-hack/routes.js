@@ -19,7 +19,7 @@ function auth(req, res, next) {
       if (err) {
         res.status(500).render(tmpl, {
           ok: false, 
-          msg: 'failed registration'
+          msg: err
         })
       }
       else {

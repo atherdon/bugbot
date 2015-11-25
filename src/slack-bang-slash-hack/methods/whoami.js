@@ -1,4 +1,4 @@
-import api from './_api'
+import api from './api'
 
 // get account info from slack
 //
