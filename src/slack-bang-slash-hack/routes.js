@@ -44,7 +44,7 @@ function index(req, res, next) {
 function slash(req, res, next) {
   let cmds = stack()
   //slash(req.body, (err, msg)=> {
-    res.status(200).json({todo:'this'})
+    res.status(200).json({todo:'this', b:req.body, cmds})
   //})
 }
 
