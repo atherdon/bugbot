@@ -1,6 +1,7 @@
 import express from 'express'
 import path from 'path'
 import {stack} from './'
+import register from './methods/register'
 
 let router = express.Router()
 let tmpl = path.join(__dirname, 'views', 'index.ejs')
@@ -14,9 +15,6 @@ function auth(req, res, next) {
     })
   }
   else {
-    function register(code, callback) {
-      callback(null, true)
-    }
     register(req.query.code, (err, success)=> {
       if (err) {
         res.status(500).render(tmpl, {
