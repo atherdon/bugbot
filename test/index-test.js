@@ -21,7 +21,7 @@ test('bot server starts', t=> {
   })
 })
 
-/*
+
 // this test looks crazier than it is
 // the first object is the entire thing
 test('bot routes are legit', t=> {
@@ -72,7 +72,7 @@ test('bot can recieve a POST from Slack', t=> {
     t.end()
   })
 })
-*/
+
 test('bot server close', t=> {
   t.plan(1)
   handler.close(x=> {

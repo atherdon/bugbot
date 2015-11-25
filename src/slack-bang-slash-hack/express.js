@@ -13,4 +13,7 @@ bb.use(parser.json())
 bb.use(parser.urlencoded({extended:true}))
 bb.use('/', routes)
 
+bb.locals.ok = true
+bb.locals.msg = ''
+
 export default bb

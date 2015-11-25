@@ -1,3 +1,7 @@
 #!/bin/sh
+rm -rf dist
+mkdir dist
 babel=./node_modules/babel-cli/bin/babel.js
 $babel src --out-dir dist
+cp -R ./src/views ./dist/views
+cp -R ./src/slack-bang-slash-hack/views ./dist/slack-bang-slash-hack/views
