@@ -8,7 +8,6 @@ export function stack() {
 }
 
 export function slash(command, callback) {
-  console.log('listening for: ', command)
   cmds[command] = callback
 }
 

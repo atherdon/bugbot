@@ -59,7 +59,10 @@ function slash(req, res, next) {
     res.status(200).json(msg) 
   }
 
-  cmds[it](req.body, done)
+  let payload = req.body
+  payload.cmd = cmd
+  payload.ids = ids
+  cmds[it](payload, done)
 
   //res.status(200).json({b:req.body, l:ids.length} )
 }
