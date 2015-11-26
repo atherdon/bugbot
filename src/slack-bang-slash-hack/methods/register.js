@@ -1,4 +1,4 @@
-import save from '../adapters/dynamo/save'
+import save from '../adapters/dynamo/save' // TODO add redis adapter
 import whoami from './whoami'
 import api from './api'
 
@@ -13,7 +13,6 @@ export default function register(code, callback) {
       let token = json.access_token
       let scope = json.scope
       // use the token to get the user account info
-      // TODO configurable adapter (need to add a redis adapter for heroku deploys)
       whoami(token, (err, acct)=> {
         // save token and owner
         acct.token = token

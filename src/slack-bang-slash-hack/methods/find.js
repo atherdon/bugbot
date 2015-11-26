@@ -1,3 +1,4 @@
-export default function find(params, callback) {
-  callback(null, null)
-}
+// TODO add redis adapter logic
+import find from '../adapters/dynamo/find'
+
+export default find
