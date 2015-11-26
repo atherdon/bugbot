@@ -1,5 +1,4 @@
 node_modules/
-test/payload.json
 dist/
 .env
 .elasticbeanstalk/

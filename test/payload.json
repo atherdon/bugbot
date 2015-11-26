@@ -1,0 +1,22 @@
+{
+  "token": "111111111111111111111111",
+  "team_id": "111111111",
+  "team_domain": "smallwins",
+  "channel_id": "111111111",
+  "channel_name": "general",
+  "user_id": "111111111",
+  "user_name": "brianleroux",
+  "command": "/bb",
+  "text": "",
+  "response_url": "https://hooks.slack.com/commands/111111111/11111111111/111111111111111111111111",
+  "ok": true,
+  "account": {
+    "url": "https://smallwins.slack.com/",
+    "team_id": "111111111",
+    "token": "1111111111111111111111111111111111111111111111111",
+    "owner": true,
+    "team": "Small Wins",
+    "user_id": "111111111",
+    "user": "brianleroux"
+  }
+}
