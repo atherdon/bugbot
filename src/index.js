@@ -56,25 +56,69 @@ slash('/bb help', (payload, message)=> {
   })
 })
 
-//start('bb')
+// start('bb')
 
-import express from 'express'
-import path from 'path'
+// create a fresh express app
+import app from './express'
 
-// create a brand new express app
-let app = express()
-
-// setup some local views
-let views = path.join(__dirname, 'views')
-app.set('views', views)
-app.set('view engine', 'ejs')
-
-// mount our slash command app
+// mount the slack app
 app.use('/bugbot', slack)
     
 // render the homepage
 app.get('/', (req, res)=> {
-  res.render('index')
+  res.render('index', {
+    ok: true,
+    msg: ''
+  })
+})
+
+import token from './slack-bang-slash-hack/methods/token'
+import whoami from './slack-bang-slash-hack/methods/whoami'
+
+app.get('/bugbot/slack/auth', (req, res)=> {
+  if (req.query.error === 'access_denied') {
+    req.session.destroy()
+    res.render('index', {
+      ok: false,
+      msg: 'access denied'
+    })
+  }
+  else {
+    // use the token to get the profile
+    token(req.query.code, (err, token)=> {
+      if (err) {
+        res.status(500).render('index', {
+          ok: false,
+          msg: 'failed to exchange code for token ' + err
+        })
+      }
+      else {
+        whoami(token, (err, account)=> {
+          req.session.account = account
+          res.render('index', {
+            ok: true,
+            msg: 'Authenticated with Slack'
+          })
+        })
+      }
+
+      // save the profile/token
+
+      // show the prompt for github auth
+    })
+  } 
+})
+
+// github auth callback
+app.get('/bugbot/github/auth', (req, res)=> {
+  // exchange the code for a token
+  github.token(req.query.code, (err, token)=> {
+    // save the token to the slack account
+    res.render('index', {
+      ok: !!err,
+      msg: err? 'Failed to authorize Github' : 'Github authorized'
+    })
+  })  
 })
 
 // if we're not a module start the server

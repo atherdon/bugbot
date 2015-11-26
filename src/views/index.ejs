@@ -1,2 +1,14 @@
+<% if (ok) { %>
+<div style=color:green><%- msg %></div>
+<% } else { %>
+<div style=color:red><%- msg %></div>
+<% } %>
 
-Nothing to see here yet.
+<% if (isLoggedIn) { %>
+Profile and logout stuff
+<% } else { %>
+<a href="https://slack.com/oauth/authorize?scope=read&client_id=<%- client_id %>&redirect_uri=https://smallwins.today/bugbot/slack/auth">Login to Slack</a>
+<% } %>
+
+
+

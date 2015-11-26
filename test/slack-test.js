@@ -1,15 +1,32 @@
+import path from 'path'
 import test from 'tape'
+import env from 'node-env-file'
 import save from '../src/slack-bang-slash-hack/adapters/dynamo/save'
 import find from '../src/slack-bang-slash-hack/adapters/dynamo/find'
 import register from '../src/slack-bang-slash-hack/methods/register'
+import whoami from '../src/slack-bang-slash-hack/methods/whoami'
+
+// if we're in dev grab env vars from .env
+let mode = process.env.NODE_ENV
+let isDev = typeof mode === 'undefined' || mode === 'development'
+
+if (isDev) {
+  env(path.join(process.cwd(), '.env'))
+  console.log('ENV loading isDev')
+}
+else {
+  console.log('ENV loading ! isDev')
+}
 
 test('sanity', t=> {
-  t.plan(3)
+  t.plan(4)
   t.ok(save, 'there is a save')
   t.ok(find, 'there is a find')
   t.ok(register, 'there is a register')
+  t.ok(whoami, 'there is a whoami')
   t.end()
 })
+
 test('cannot register with a bad code', t=> {
   t.plan(1)
   register('bad-code-here', (err, response)=> {
@@ -38,6 +55,21 @@ test('can save a registration', t=> {
     }
     else {
       t.ok(account, 'saved account')
+      console.log(account)
+    }
+    t.end()
+  })
+})
+
+test('whomai', t=> {
+  let token = process.env.SLACK_TEST_TOKEN
+  whoami(token, (err, account)=> {
+    if (err) {
+      t.fail(err, err)
+      console.log('token: ', token)
+    }
+    else {
+      t.ok(account, 'got an account for token ' + token)
       console.log(account)
     }
     t.end()
