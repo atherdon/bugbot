@@ -2,6 +2,15 @@ import aws from 'aws-sdk'
 
 let dynamo = new aws.DynamoDB()
 
+function clean(obj) {
+  let keys = Object.keys(obj)
+  let result = {}
+  keys.forEach(k=> {
+    result[k] = obj[k].S || obj[k].BOOL
+  })
+  return result
+}
+
 function find(params, callback) {
   if (!params.user_id || !params.team_id) {
     callback(Error('user_id or team_id missing'))
@@ -20,7 +29,8 @@ function find(params, callback) {
         callback(err)
       }
       else {
-        callback(null, data)
+        let account = data.Item? clean(data.Item) : null
+        callback(null, account)
       }
     })
   }
