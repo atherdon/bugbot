@@ -2,9 +2,15 @@ import express from 'express'
 import path from 'path'
 import {stack} from './'
 import register from './methods/register'
+import find from './methods/find'
 
 let router = express.Router()
 let tmpl = path.join(__dirname, 'views', 'index.ejs')
+
+// shows the description page
+function index(req, res) {
+  res.render(tmpl)
+}
 
 // register an account
 function auth(req, res, next) {
@@ -32,14 +38,6 @@ function auth(req, res, next) {
   }
 }
 
-// shows the description page
-function index(req, res, next) {
-  res.render(tmpl, {
-    ok: true,
-    message: ''
-  })
-}
-
 // recives a slash command
 function slash(req, res, next) {
   let cmds = stack()                                         // all the commands
@@ -52,8 +50,22 @@ function slash(req, res, next) {
   let done = msg=>res.status(200).json(msg)                  // the completion callback
 
   // lookup the account, save if it doesn't exist, and pass the info to the callback hander
-  let payload = req.body
-  msg(payload, done)
+  find(req.body, (err, account)=> {
+    let payload = req.body
+    if (err) {
+      payload.ok = false
+      payload.text = 'find method returned an error'
+    }
+    else if (!account) {
+      payload.ok = true 
+      payload.text = 'account not found'
+    }
+    else {
+      payload.ok = true 
+      payload.account = account
+    }
+    msg(payload, done)
+  })
 }
 
 router.get('/', index)
