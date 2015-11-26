@@ -62,13 +62,22 @@ test('bot routes are legit', t=> {
 })
 
 test('bot can recieve a POST from Slack', t=> {
-  request.post(`${base}/bugbot`, (err, res)=> {
-    t.plan(1)
+  let json = true
+  let url = `${base}/bugbot`
+  let form = require('./payload.json')
+  let query = {url, form, json}
+
+  request.post(query, (err, res)=> {
     if (err) {
       t.fail(err, err)
     }
+    else if (res.body.error) {
+      t.fail(res.body.error, res.body.error)
+    }
     else {
-      t.equals(res.statusCode, 200, 'POST was 200')
+      let json = res.body
+      t.ok(json, 'got json')
+      console.log(json)
     }
     t.end()
   })

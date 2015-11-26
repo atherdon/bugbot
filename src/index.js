@@ -1,10 +1,18 @@
+import github from 'bugbot-github-issues'
 import slack, {slash, start} from './slack-bang-slash-hack'
 
 // handler for the slack slash command: /bugbot
 slash('/bb', (payload, message)=> {
-  message({
-    text: `/bb got a message! ${JSON.stringify(payload)}`
-  })
+  if (payload.account.github_token) {
+    let text = JSON.stringify(payload)
+    message({text})
+  }
+  else {
+    github.register((err, link)=> {
+      let text = `${err? err : link} ${JSON.stringify(payload)}`
+      message({text})
+    })
+  }
 })
 
 // handler for the slack slash command: /bugbot
