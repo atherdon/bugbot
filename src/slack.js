@@ -1,4 +1,6 @@
 import github from 'bugbot-github-issues'
+import jwt from 'jsonwebtoken'
+import uuid from 'node-uuid'
 import slack, {slash, start} from './slack-bang-slash-hack'
 
 let help = `
@@ -21,6 +23,10 @@ To open a new Github Issue on the current repo:
 
 `
 
+// this means tokens are invalid between redeploys
+// so far, using token only to encode state on github auth callback
+let secret = uuid.v4()
+
 // handler for the slack slash command: /bugbot
 slash('/bb', (payload, message)=> {
   if (payload.account.github_token) {
@@ -28,33 +34,18 @@ slash('/bb', (payload, message)=> {
     message({text})
   }
   else {
+    // grab a reg link
     github.register((err, link)=> {
-      let text = `${err? err : link} ${JSON.stringify(payload)}`
+      // encode the slack team_id and user_id so we know who to associate this to
+      let state = {user_id: payload.account.user_id, team_id: payload.account.team_id}
+      var token = jwt.sign(state, secret) 
+      let anchor = `${link}&state=${token}`
+      let text = `${err? err : anchor} \n\n\n ${JSON.stringify(payload)}`
       message({text})
     })
   }
 })
 
-// handler for the slack slash command: /bugbot
-slash('/bb open', (payload, message)=> {
-  message({
-    text: `/bb open got a message! ${JSON.stringify(payload)}`
-  })
-})
-
-// handler for the slack slash command: /bugbot
-slash('/bb list', (payload, message)=> {
-  message({
-    text: `/bb list got a message! ${JSON.stringify(payload)}`
-  })
-})
-
-// handler for the slack slash command: /bugbot
-slash('/bb help', (payload, message)=> {
-  message({
-    text: `/bb help got a message! ${JSON.stringify(payload)}`
-  })
-})
 
 // if being called directly startup
 if (require.main === module) {
