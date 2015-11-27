@@ -5,19 +5,15 @@ import register from './methods/register'
 import find from './methods/find'
 
 let router = express.Router()
-let tmpl = path.join(__dirname, 'views', 'index.ejs')
+let tmpl = 'install'
+let install = (req, res)=>res.render(tmpl)
 
-// shows the description page
-function index(req, res) {
-  res.render(tmpl)
-}
-
-// register an account
+// register the integration account (effectively the app owner)
 function auth(req, res, next) {
   if (req.query.error === 'access_denied') {
     res.status(403).render(tmpl, {
       ok: false, 
-      message: 'access denied'
+      msg: 'access denied'
     })
   }
   else {
@@ -68,7 +64,7 @@ function slash(req, res, next) {
   })
 }
 
-router.get('/', index)
+router.get('/', install)
 router.post('/', slash)
 router.get('/auth', auth)
 
