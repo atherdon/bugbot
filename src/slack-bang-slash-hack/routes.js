@@ -72,7 +72,7 @@ function slash(req, res, next) {
     }
     else {
       payload.ok = true 
-      payload.text 'account found'
+      payload.text = 'account found'
       payload.account = account
     }
     msg(payload, done)
