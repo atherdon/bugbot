@@ -1,6 +1,7 @@
 import app from './config'
 import button from './methods/button'
 import save from './methods/save'
+import whoami from './methods/whoami'
 import chalk from 'chalk'
 
 let port = process.env.PORT || 3000
@@ -24,10 +25,11 @@ export function start(name='slack-app') {
   })
 }
 
-app.stack = stack
-app.slash = slash
-app.start = start
+app.stack  = stack
+app.slash  = slash
+app.start  = start
 app.button = button
-app.save = save
+app.save   = save
+app.whoami = whoami
 
 export default app
