@@ -12,16 +12,19 @@ let index = (req, res)=>res.render('index')
 function auth(req, res) {
   // exchange the code for a token
   github.token(req.query.code, (err, gh)=> {
-    // save the token to the slack account
-    let ok = err === null
-    let msg = ok? 'Github authorized' : 'Failed to authorize Github'
-    
-    let access_token = gh.access_token
+    // parse response
     let jwt_token = jwt.verify(req.query.state, process.env.SECRET)
- 
-    msg += ' ' + JSON.stringify(jwt_token)
-    
-    res.render('index', {ok, msg})
+    let account = {
+      user_id: jwt_token.user_id,
+      team_id: jwt_token.team_id,
+      github_token: gh.access_token
+    }
+    // save the token to the slack account
+    slack.save(account, (err, account)=> {
+      let ok = err === null
+      let msg = ok? 'Github authorized' : 'Failed to authorize Github'
+      res.render('index', {ok, msg})
+    })
   })  
 }
     

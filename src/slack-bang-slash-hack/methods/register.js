@@ -1,4 +1,4 @@
-import save from '../adapters/dynamo/save' // TODO add redis adapter
+import save from './save' 
 import whoami from './whoami'
 import api from './api'
 

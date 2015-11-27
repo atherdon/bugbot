@@ -1,5 +1,6 @@
 import app from './config'
 import button from './methods/button'
+import save from './methods/save'
 import chalk from 'chalk'
 
 let port = process.env.PORT || 3000
@@ -27,5 +28,6 @@ app.stack = stack
 app.slash = slash
 app.start = start
 app.button = button
+app.save = save
 
 export default app
