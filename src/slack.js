@@ -22,9 +22,6 @@ To open a new Github Issue on the current repo:
 
 `
 
-// so far, using token only to encode state on github auth callback
-let secret = process.env.SECRET
-
 // handler for the slack slash command: /bugbot
 slash('/bb', (payload, message)=> {
   if (payload.account.github_token) {
@@ -35,6 +32,7 @@ slash('/bb', (payload, message)=> {
     github.register((err, link)=> {
       // encode the slack team_id and user_id so we know who to associate this to
       let state = {user_id: payload.account.user_id, team_id: payload.account.team_id}
+      let secret = process.env.SECRET
       var token = jwt.sign(state, secret) 
       let anchor = `${link}&state=${token}`
       let text = `${err? err : anchor} \n\n\n ${JSON.stringify(payload)}`
@@ -43,6 +41,9 @@ slash('/bb', (payload, message)=> {
   }
 })
 
+slash('/bb auth', (payload, message)=> {
+  message({text:'```' + JSON.stringify(payload.account, null, 2) + '```'})
+})
 
 // if being called directly startup
 if (require.main === module) {
