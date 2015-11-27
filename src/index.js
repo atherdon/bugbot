@@ -12,9 +12,9 @@ function auth(req, res) {
   // exchange the code for a token
   github.token(req.query.code, (err, token)=> {
     // save the token to the slack account
-    let ok = !!err
-    let msg = !!err? 'Failed to authorize Github' : 'Github authorized'
-    msg += JSON.stringify({err, token})
+    let ok = err === null
+    let msg = ok? 'Github authorized' : 'Failed to authorize Github'
+    msg += ' ' + JSON.stringify({err, token})
     res.render('index', {ok, msg})
   })  
 }
