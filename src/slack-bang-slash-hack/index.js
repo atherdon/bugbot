@@ -1,5 +1,6 @@
 import app from './config'
 import button from './methods/button'
+import find from './methods/find'
 import save from './methods/save'
 import whoami from './methods/whoami'
 import chalk from 'chalk'
@@ -29,6 +30,7 @@ app.stack  = stack
 app.slash  = slash
 app.start  = start
 app.button = button
+app.find   = find
 app.save   = save
 app.whoami = whoami
 
