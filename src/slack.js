@@ -43,11 +43,11 @@ slash('/bb', (payload, message)=> {
 })
 
 slash('/bb whoami', (payload, message)=> {
-  slack.whoami(payload.token, (err, account)=> {
+//  slack.whoami(payload.token, (err, account)=> {
     message({
-      text: '```' + JSON.stringify({err, account}, null, 2) + '```'
+      text: '```' + JSON.stringify({err, payload}, null, 2) + '```'
     })
-  })
+//  })
   // message({text:'```' + JSON.stringify(payload.account, null, 2) + '```'})
 })
 
