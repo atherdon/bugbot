@@ -60,7 +60,7 @@ function slash(req, res, next) {
     }
   }
 
-  // lookup the account, save if it doesn't exist, and pass the info to the callback hander
+  // lookup the account in the db
   find(payload.raw, (err, account)=> {
     if (err) {
       payload.ok = false
@@ -69,6 +69,7 @@ function slash(req, res, next) {
     else if (!account) {
       payload.ok = true 
       payload.text = 'account not found'
+      payload.account = {}
     }
     else {
       payload.ok = true 

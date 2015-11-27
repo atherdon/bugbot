@@ -28,8 +28,7 @@ let secret = process.env.SECRET
 // handler for the slack slash command: /bugbot
 slash('/bb', (payload, message)=> {
   if (payload.account.github_token) {
-    let text = `${help} ${JSON.stringify(payload)}`
-    message({text})
+    message({text:'```'+help+'```'})
   }
   else {
     // grab a reg link
