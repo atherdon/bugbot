@@ -35,7 +35,7 @@ slash('/bb', (payload, message)=> {
       let state  = {user_id: payload.account.user_id, team_id: payload.account.team_id}
       let secret = process.env.SECRET
       var token  = jwt.sign(state, secret) 
-      let anchor = `${link}&state=${token}`
+      let anchor = `<${link}&state=${token}|Please login with Github to use Bugbot>`
       let text   = `${err? err : anchor} \n\n\n ${JSON.stringify(payload)}`
       message({text})
     })
