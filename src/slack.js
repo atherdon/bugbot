@@ -7,7 +7,8 @@ let help = `
 Welcome to Bugbot! 
 
   /bb ..................... shows help
-  /bb auth ................ return your account info
+  /bb whoami .............. return your account info
+  /bb logout .............. revoke your github access
   /bb repo................. read your current repo
   /bb repo org/reponame ... set current repo
   /bb repo list ........... list your repos
@@ -31,18 +32,30 @@ slash('/bb', (payload, message)=> {
     // grab a reg link
     github.register((err, link)=> {
       // encode the slack team_id and user_id so we know who to associate this to
-      let state = {user_id: payload.account.user_id, team_id: payload.account.team_id}
+      let state  = {user_id: payload.account.user_id, team_id: payload.account.team_id}
       let secret = process.env.SECRET
-      var token = jwt.sign(state, secret) 
+      var token  = jwt.sign(state, secret) 
       let anchor = `${link}&state=${token}`
-      let text = `${err? err : anchor} \n\n\n ${JSON.stringify(payload)}`
+      let text   = `${err? err : anchor} \n\n\n ${JSON.stringify(payload)}`
       message({text})
     })
   }
 })
 
-slash('/bb auth', (payload, message)=> {
+slash('/bb whoami', (payload, message)=> {
   message({text:'```' + JSON.stringify(payload.account, null, 2) + '```'})
+})
+
+slash('/bb logout', (payload, message)=> {
+  let account = {
+    user_id: payload.account.user_id, 
+    team_id: payload.account.team_id
+  } 
+  slack.save(account, (err, account)=> {
+    message({
+      text: err? 'Failed to logout from Github' : 'Successfully logged out of Github'
+    })
+  })
 })
 
 // if being called directly startup
