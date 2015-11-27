@@ -45,9 +45,23 @@ function slash(req, res, next) {
   let msg  = cmds[id]                                        // the method to call
   let done = msg=>res.status(200).json(msg)                  // the completion callback
 
+  // cleanup the payload signature {raw, message, account}
+  let payload = {
+    ok: true,
+    raw: req.body,
+    account: {},
+    message: {
+      token: req.body.token, 
+      response_url: req.body.response_url, 
+      channel_id: req.body.channel_id,
+      channel_name: req.body.channel_name,
+      command: req.body.command,
+      text: req.body.text
+    }
+  }
+
   // lookup the account, save if it doesn't exist, and pass the info to the callback hander
-  find(req.body, (err, account)=> {
-    let payload = req.body
+  find(payload.raw, (err, account)=> {
     if (err) {
       payload.ok = false
       payload.text = 'find method returned an error'
@@ -58,6 +72,7 @@ function slash(req, res, next) {
     }
     else {
       payload.ok = true 
+      payload.text 'account found'
       payload.account = account
     }
     msg(payload, done)
