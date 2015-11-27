@@ -1,5 +1,6 @@
 import github from 'bugbot-github-issues'
 import slack from './slack'
+import jwt from 'jsonwebtoken'
 import app from './config'
 
 // mount the slack app
@@ -10,11 +11,16 @@ let index = (req, res)=>res.render('index')
 // github oauth callback
 function auth(req, res) {
   // exchange the code for a token
-  github.token(req.query.code, (err, token)=> {
+  github.token(req.query.code, (err, gh)=> {
     // save the token to the slack account
     let ok = err === null
     let msg = ok? 'Github authorized' : 'Failed to authorize Github'
-    msg += ' ' + JSON.stringify({err, token})
+    
+    let access_token = gh.access_token
+    let jwt_token = jwt.verify(req.query.state, process.env.SECRET)
+ 
+    msg += ' ' + JSON.stringify(jwt_token)
+    
     res.render('index', {ok, msg})
   })  
 }

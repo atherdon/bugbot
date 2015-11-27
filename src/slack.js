@@ -1,6 +1,5 @@
 import github from 'bugbot-github-issues'
 import jwt from 'jsonwebtoken'
-import uuid from 'node-uuid'
 import slack, {slash, start} from './slack-bang-slash-hack'
 
 let help = `
@@ -23,9 +22,8 @@ To open a new Github Issue on the current repo:
 
 `
 
-// this means tokens are invalid between redeploys
 // so far, using token only to encode state on github auth callback
-let secret = uuid.v4()
+let secret = process.env.SECRET
 
 // handler for the slack slash command: /bugbot
 slash('/bb', (payload, message)=> {
