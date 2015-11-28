@@ -12,8 +12,10 @@ export function stack() {
   return cmds
 }
 
-export function slash(cmd, callback) {
-  cmds[cmd] = callback
+//export function slash(cmd, callback) {
+export function slash(...args) {
+  let cmd = args.shift() // first arg is the cmd
+  cmds[cmd] = args       // rest of them are middlewares
 }
 
 export function start(name='slack-app') {

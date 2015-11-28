@@ -42,8 +42,9 @@ function slash(req, res, next) {
   let ids  = Object.keys(cmds)                               // all the command ids
   let it   = ids.filter(id=> id.indexOf(cmd) > -1)           // array of matches
   let id   = it.length === 0? ids[0] : it[0]                 // THE id or the first one
-  let msg  = cmds[id]                                        // the method to call
-  let done = msg=>res.status(200).json(msg)                  // the completion callback
+  let msg  = cmds[id]                                        // the middlewares array to call
+
+  //let done = msg=>res.json(msg)                              // the completion callback
 
   // cleanup the payload signature {raw, message, account}
   let payload = {
@@ -75,7 +76,20 @@ function slash(req, res, next) {
       payload.text = 'account found'
       payload.account = account
     }
-    msg(payload, done)
+
+    // poor mans middleware pattern
+    let i = msg.length
+    var next;
+    let isDone = false
+    function done(msg) {
+      isDone = true
+      res.json(msg)
+    }
+    while (i--) {  
+      if (!isDone) {
+        next = msg[i].call({}, payload, done, next)
+      }
+    }
   })
 }
 
