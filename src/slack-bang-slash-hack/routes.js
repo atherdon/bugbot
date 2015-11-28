@@ -91,7 +91,7 @@ function slash(req, res, next) {
     // named iife for the first middleware fn
     ;(function iterator(i) {
       // grab the next middleware fn to exec
-      let next = iterator.bind(null, i++)
+      let next = iterator.bind(null, ++i)
       // exec the current middleware with payload and msg
       middleware[i].call({}, payload, message, next)
     })(0)
