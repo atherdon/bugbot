@@ -36,16 +36,7 @@ test('cannot register with a bad code', t=> {
   })
 })
 
-test('can find a registration', t=> {
-  t.plan(1)
-  find({user_id:'fake_user_id', team_id:'fake_team_id'}, (err, account)=> {
-    t.ok(account, account)
-    console.log(account)
-    t.end()
-  })
-})
-
-test('can save a registration', t=> {
+test('can save a fake registration', t=> {
   t.plan(1)
   let user_id= 'fake_user_id'
   let team_id = 'fake_team_id'
@@ -61,6 +52,16 @@ test('can save a registration', t=> {
   })
 })
 
+test('can find the fake registration', t=> {
+  t.plan(1)
+  find({user_id:'fake_user_id', team_id:'fake_team_id'}, (err, account)=> {
+    t.ok(account, account)
+    console.log(account)
+    t.end()
+  })
+})
+
+/*
 test('whomai', t=> {
   let token = process.env.SLACK_TEST_TOKEN
   whoami(token, (err, account)=> {
@@ -75,3 +76,4 @@ test('whomai', t=> {
     t.end()
   })
 })
+*/
