@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken'
 
 export default function auth(payload, message, next) {
   if (payload.account.github_token) {
-    next(payload, message)
+    next()
   }
   else {
     // grab a reg link
