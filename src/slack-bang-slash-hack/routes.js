@@ -42,11 +42,9 @@ function slash(req, res, next) {
   let ids  = Object.keys(cmds)                               // all the command ids
   let it   = ids.filter(id=> id.indexOf(cmd) > -1)           // array of matches
   let id   = it.length === 0? ids[0] : it[0]                 // THE id or the first one
-  let msg  = cmds[id]                                        // the middlewares array to call
+  let msg  = cmds[id].reverse()                              // the middlewares array to call
 
-  //let done = msg=>res.json(msg)                              // the completion callback
-
-  // cleanup the payload signature {raw, message, account}
+  // cleanup the payload signature: {raw, message, account}
   let payload = {
     ok: true,
     raw: req.body,
@@ -63,6 +61,7 @@ function slash(req, res, next) {
 
   // lookup the account in the db
   find(payload.raw, (err, account)=> {
+
     if (err) {
       payload.ok = false
       payload.text = 'find method returned an error'
