@@ -1,16 +1,8 @@
-import express from 'express'
 import github from 'bugbot-github-issues'
 import jwt from 'jsonwebtoken'
-import slack from './slack'
+import slack from '../slack'
 
-let router = express.Router()
-
-function index(req, res) {
-  res.render('index')
-}
-
-// github oauth callback
-function auth(req, res) {
+export default function auth(req, res) {
   // exchange the code for a token
   github.token(req.query.code, (err, gh)=> {
     // parse response
@@ -34,9 +26,3 @@ function auth(req, res) {
     })
   })  
 }
-    
-// register the routes
-router.get('/', index)
-router.get('/bugbot/github/auth', auth)
-
-export default router

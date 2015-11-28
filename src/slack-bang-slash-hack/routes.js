@@ -1,4 +1,5 @@
 import express from 'express'
+import async from 'async'
 import path from 'path'
 import {stack} from './'
 import register from './methods/register'
@@ -34,31 +35,29 @@ function auth(req, res, next) {
   }
 }
 
-// recives a slash command
-function slash(req, res, next) {
-  let cmds = stack()                                         // all the commands
-  let sub  = req.body.text? req.body.text.split(' ')[0] : '' // sub command (foo from '/bb foo')
-  let cmd  = `${req.body.command} ${sub}`.trim()             // full command ('/bb foo')
-  let ids  = Object.keys(cmds)                               // all the command ids
-  let it   = ids.filter(id=> id.indexOf(cmd) > -1)           // array of matches
-  let id   = it.length === 0? ids[0] : it[0]                 // THE id or the first one
-  let msg  = cmds[id].reverse()                              // the middlewares array to call
-
+function parseSlackMessage(msg, callback) {
+  let cmds = stack()                                // all the commands
+  let sub  = msg.text? msg.text.split(' ')[0] : ''  // sub command (foo from '/bb foo')
+  let cmd  = `${msg.command} ${sub}`.trim()         // full command ('/bb foo')
+  let ids  = Object.keys(cmds)                      // all the command ids
+  let it   = ids.filter(id=> id.indexOf(cmd) > -1)  // array of matches
+  let id   = it.length === 0? ids[0] : it[0]        // THE id or the first one
+  // slash command middleware wut
+  let middleware = cmds[id].reverse()
   // cleanup the payload signature: {raw, message, account}
   let payload = {
     ok: true,
-    raw: req.body,
+    raw: msg,
     account: {},
     message: {
-      token: req.body.token, 
-      response_url: req.body.response_url, 
-      channel_id: req.body.channel_id,
-      channel_name: req.body.channel_name,
-      command: req.body.command,
-      text: req.body.text
+      token: msg.token, 
+      response_url: msg.response_url, 
+      channel_id: msg.channel_id,
+      channel_name: msg.channel_name,
+      command: msg.command,
+      text: msg.text
     }
   }
-
   // lookup the account in the db
   find(payload.raw, (err, account)=> {
 
@@ -68,28 +67,34 @@ function slash(req, res, next) {
     }
     else if (!account) {
       payload.ok = true 
-      payload.text = 'account not found'
+      payload.text = 'no account saved for this slack user'
     }
     else {
       payload.ok = true 
       payload.text = 'account found'
       payload.account = account
     }
+    // end of find
+    callback(err, {payload, middleware})
+  })
+}
 
-    // poor mans middleware pattern
-    let i = msg.length
-    let isDone = false
-    var next;
-    function done(msg) {
-      isDone = true
-      res.json(msg)
-    }
-    while (i--) {  
-      if (!isDone) {
-        next = msg[i === 0 ? 0 : i - 1]
-        msg[i].call({}, payload, done, next)
-      }
-    }
+// recives a slash command
+function slash(req, res, next) {
+  // parse out the payload and middleware for the Slack /command POST
+  parseSlackMessage(req.body, (err, data)=> {
+    // payload is passed to each middleware fn 
+    // each middleware fn is executed in serial by callee executing next()
+    let {payload, middleware} = data
+    // sends response to the Slack POST (halting the middleware exec)
+    let message = msg=> res.json(msg)
+    // named iife for the first middleware fn
+    ;(function iterator(i) {
+      // grab the next middleware fn to exec
+      let next = iterator.bind(null, i++)
+      // exec the current middleware with payload and msg
+      middleware[i].call({}, payload, message, next)
+    })(0)
   })
 }
 
