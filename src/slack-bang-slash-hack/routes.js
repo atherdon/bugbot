@@ -69,7 +69,6 @@ function slash(req, res, next) {
     else if (!account) {
       payload.ok = true 
       payload.text = 'account not found'
-      payload.account = {}
     }
     else {
       payload.ok = true 
