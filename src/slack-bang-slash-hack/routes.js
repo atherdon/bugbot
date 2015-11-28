@@ -78,15 +78,16 @@ function slash(req, res, next) {
 
     // poor mans middleware pattern
     let i = msg.length
-    var next;
     let isDone = false
+    var next;
     function done(msg) {
       isDone = true
       res.json(msg)
     }
     while (i--) {  
       if (!isDone) {
-        next = msg[i].call({}, payload, done, next)
+        next = msg[i === 0 ? 0 : i - 1]
+        msg[i].call({}, payload, done, next)
       }
     }
   })
