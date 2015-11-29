@@ -1,9 +1,16 @@
-import github from 'bugbot-github-issues'
+export default function repoCmd(payload, message) {
 
-export default function repo(payload, message) {
-  let token = payload.account.github_token
-  github.repos(token, (err, repos)=> {
-    let text = '```' + JSON.stringify(err? {err} : {repos}, null, 2) + '```'
-    message({text})
-  })
+  let repo = payload.account.github_repo
+  let text = repo? repo : `
+        
+  No repo set! Select a repo by running:
+       
+    /bb repo username/reponame
+
+  You can list all your repos by running:
+
+    /bb repos
+
+  `
+  message({text})
 }

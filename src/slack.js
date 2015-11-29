@@ -6,12 +6,14 @@ import help from './commands/help'
 import whoami from './commands/whoami'
 import logout from './commands/logout'
 import repo from './commands/repo'
+import repos from './commands/repos'
 
 // register slash command middlewares
 slash('/bb',        auth, help)
 slash('/bb whoami', auth, whoami)
 slash('/bb logout', auth, logout)
 slash('/bb repo',   auth, repo)
+slash('/bb repos',   auth, repos)
 
 // if being called directly startup
 if (require.main === module) {

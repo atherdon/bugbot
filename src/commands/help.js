@@ -7,7 +7,7 @@ let help = `
     /bb logout .............. revoke your github access
     /bb repo................. read your current repo
     /bb repo org/reponame ... set current repo
-    /bb repo list ........... list your repos
+    /bb repos ............... list your repos
     /bb help ................ also shows help
     /bb open ................ shows open issues
 
