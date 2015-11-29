@@ -54,24 +54,28 @@ export default function slash(req, res, next) {
   parseSlackMessage(req.body, (err, data)=> {
 
     function message(msg) {
-      let url     = payload.message.response_url
-      let json    = true
+      let url     = payload.message.response_url + '?token=' + payload.message.token
       let headers = {Accept: 'application/json'}
-      let client_id = process.env.SLACK_CLIENT_ID
-      let client_secret = process.env.SLACK_CLIENT_SECRET
+      let json    = true
+      //let client_id = process.env.SLACK_CLIENT_ID
+      //let client_secret = process.env.SLACK_CLIENT_SECRET
+
+      let form = msg
+      form.channel = payload.message.channel_id
+      /*
       let form    = msg
       form.token  = payload.message.token 
       form.client_id = client_id
       form.client_secret = client_secret
-
+      */
       let query   = {url, headers, form, json}
       request.post(query, (err, res)=> {
         // blackhole!
-        console.log('POST TO SLACK', err, res.body)
+        console.log('POST TO SLACK', msg, err, res.body)
+        res.json({text:res.body})
       })
       //res.status(200).json({text:'```'+JSON.stringify(payload, null, 2)+'```'})
       //
-      res.json({response_type:'ephemeral'})
     }
     // payload is passed to each middleware fn 
     // each middleware fn is executed in serial by callee executing next()
