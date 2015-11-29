@@ -1,6 +1,6 @@
 import slack from './slack'
 import routes from './routes'
-import app from './config'
+import app from './routes/configure'
 import index from './routes/index'
 import auth from './routes/auth'
 

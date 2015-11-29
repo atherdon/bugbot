@@ -2,7 +2,7 @@ import express from 'express'
 import logger from 'morgan'
 import chalk from 'chalk'
 import path from 'path'
-import slack from './slack-bang-slash-hack'
+import slack from '../slack-bang-slash-hack'
 
 let app = express()
 
@@ -12,7 +12,7 @@ app.locals.ok = true
 app.locals.msg = ''
 
 // local views
-let views = path.join(__dirname, 'views')
+let views = path.join(__dirname, '..', 'views')
 app.set('views', views)
 app.set('view engine', 'ejs')
 
@@ -24,7 +24,7 @@ app.start = function() {
   let port = process.env.PORT || 3000
   app.listen(port, x=> {
     if (process.env.NODE_ENV === 'development') {
-      let msg = chalk.green(`#!/bugbot>`)
+      let msg = chalk.bgBlue.yellow(`#!/bugbot>`)
       let url = chalk.underline.cyan(`http://localhost:${port}`)
       console.log(`${msg} ${url}`)
     }

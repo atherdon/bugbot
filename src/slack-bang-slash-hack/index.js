@@ -28,9 +28,12 @@ export function start(name='slack-app') {
   })
 }
 
+// app declaritive defn api
 app.stack  = stack
 app.slash  = slash
 app.start  = start
+
+// persistence apis
 app.button = button
 app.find   = find
 app.save   = save
