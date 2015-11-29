@@ -1,19 +1,9 @@
-// creates a dynamodb instance for storing
+// creates a dynamodb instance for storing Slack accounts
 //
-// appname-accounts
+// tablename
 // -------------------
 // user_id ... hash
 // team_id ... range
-// 
-// code?
-// token?
-//
-// url?
-// team?
-// user?
-//
-// github_token?
-// github_repo?
 //
 import aws from 'aws-sdk'
 
@@ -69,7 +59,7 @@ export function create(table, callback) {
   })
 }
 
-export default function init(appname, callback) {
+export default function init(appname='slack-slash-app', callback) {
   exists(appname, (err, found)=> {
     if (err) {
       callback(err, false)
