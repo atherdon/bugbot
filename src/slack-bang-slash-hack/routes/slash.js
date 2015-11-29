@@ -69,7 +69,9 @@ export default function slash(req, res, next) {
         // blackhole!
         console.log('POST TO SLACK', err, res.body)
       })
-      res.status(200).json({text:'```'+JSON.stringify(payload, null, 2)+'```'})
+      //res.status(200).json({text:'```'+JSON.stringify(payload, null, 2)+'```'})
+      //
+      res.json({response_type:'ephemeral'})
     }
     // payload is passed to each middleware fn 
     // each middleware fn is executed in serial by callee executing next()
