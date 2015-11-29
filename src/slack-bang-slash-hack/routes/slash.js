@@ -54,7 +54,7 @@ export default function slash(req, res, next) {
   parseSlackMessage(req.body, (err, data)=> {
 
     function message(msg) {
-      let url     = payload.message.response_url + '?token=' + payload.message.token
+      let url     = payload.message.response_url //+ '?token=' + payload.message.token
       let headers = {Accept: 'application/json'}
       let json    = true
       //let client_id = process.env.SLACK_CLIENT_ID
