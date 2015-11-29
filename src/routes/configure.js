@@ -24,7 +24,7 @@ app.start = function() {
   let port = process.env.PORT || 3000
   app.listen(port, x=> {
     if (process.env.NODE_ENV === 'development') {
-      let msg = chalk.bgBlue.yellow(`#!/bugbot>`)
+      let msg = chalk.green.bold(`#!/bugbot>`)
       let url = chalk.underline.cyan(`http://localhost:${port}`)
       console.log(`${msg} ${url}`)
     }

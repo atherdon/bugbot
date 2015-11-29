@@ -2,22 +2,23 @@ import app from './routes/configure'
 import button from './methods/button'
 import find from './methods/find'
 import save from './methods/save'
-import whoami from './methods/whoami'
 import chalk from 'chalk'
 
 let port = process.env.PORT || 3000
 let cmds = {}
 
+// returns the registered slash commands
 export function stack() {
   return cmds
 }
 
-//export function slash(cmd, callback) {
+// register a slash command
 export function slash(...args) {
   let cmd = args.shift() // first arg is the cmd
   cmds[cmd] = args       // rest of them are middlewares
 }
 
+// starts the server 
 export function start(name='slack-app') {
   app.listen(port, x=> {
     if (process.env.NODE_ENV === 'development') {
@@ -32,11 +33,11 @@ export function start(name='slack-app') {
 app.stack  = stack
 app.slash  = slash
 app.start  = start
-
-// persistence apis
 app.button = button
+
+// app account persistence apis
 app.find   = find
 app.save   = save
-app.whoami = whoami
 
+// the app, is just an express app
 export default app

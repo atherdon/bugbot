@@ -1,4 +1,4 @@
-import register from '../methods/register'
+import _install from '../methods/_install'
 
 // register the integration account (effectively the app owner)
 export default function install(req, res, next) {
@@ -9,7 +9,7 @@ export default function install(req, res, next) {
     })
   }
   else {
-    register(req.query.code, (err, success)=> {
+    _install(req.query.code, (err, success)=> {
       if (err) {
         res.status(500).render('install', {
           ok: false, 

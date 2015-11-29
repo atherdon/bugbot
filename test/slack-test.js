@@ -3,8 +3,7 @@ import test from 'tape'
 import env from 'node-env-file'
 import save from '../src/slack-bang-slash-hack/adapters/dynamo/save'
 import find from '../src/slack-bang-slash-hack/adapters/dynamo/find'
-import register from '../src/slack-bang-slash-hack/methods/register'
-import whoami from '../src/slack-bang-slash-hack/methods/whoami'
+import install from '../src/slack-bang-slash-hack/methods/_install'
 
 // if we're in dev grab env vars from .env
 let mode = process.env.NODE_ENV
@@ -19,17 +18,16 @@ else {
 }
 
 test('sanity', t=> {
-  t.plan(4)
+  t.plan(3)
   t.ok(save, 'there is a save')
   t.ok(find, 'there is a find')
-  t.ok(register, 'there is a register')
-  t.ok(whoami, 'there is a whoami')
+  t.ok(install, 'there is a install')
   t.end()
 })
 
 test('cannot register with a bad code', t=> {
   t.plan(1)
-  register('bad-code-here', (err, response)=> {
+  install('bad-code-here', (err, response)=> {
     t.equals(err, 'invalid_code', err)
     console.log(err, response)
     t.end()
