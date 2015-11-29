@@ -55,10 +55,15 @@ export default function slash(req, res, next) {
 
     function message(msg) {
       let url     = payload.message.response_url
+      let json    = true
       let headers = {Accept: 'application/json'}
+      let client_id = process.env.SLACK_CLIENT_ID
+      let client_secret = process.env.SLACK_CLIENT_SECRET
       let form    = msg
       form.token  = payload.message.token 
-      let json    = true
+      form.client_id = client_id
+      form.client_secret = client_secret
+
       let query   = {url, headers, form, json}
       request.post(query, (err, res)=> {
         // blackhole!
