@@ -69,9 +69,9 @@ export default function slash(req, res, next) {
       form.client_secret = client_secret
       */
       let query   = {url, headers, form, json}
-      request.post(query, (err, res)=> {
+      request.post(query, (err, response)=> {
         // blackhole!
-        console.log('POST TO SLACK', msg, err, res.body)
+        console.log('POST TO SLACK', msg, err, response.body)
         res.json({text:res.body})
       })
       //res.status(200).json({text:'```'+JSON.stringify(payload, null, 2)+'```'})
