@@ -47,13 +47,27 @@ function parseSlackMessage(msg, callback) {
 
 // recives a slash command
 export default function slash(req, res, next) {
+
+
   // parse out the payload and middleware for the Slack /command POST
   parseSlackMessage(req.body, (err, data)=> {
+
+    function message(msg) {
+      let url     = payload.message.response_url
+      let headers = {Accept: 'application/json'}
+      let form    = msg
+      let json    = true
+      let query   = {url, headers, form, json}
+      req.post(query, (err, res)=> {
+        // blackhole!
+      })
+      res.status(200).end()
+    }
     // payload is passed to each middleware fn 
     // each middleware fn is executed in serial by callee executing next()
     let {payload, middleware} = data
     // sends response to the Slack POST (halting the middleware exec)
-    let message = msg=> res.json(msg)
+    //let message = msg=> res.json(msg)
     // named iife for the first middleware fn
     ;(function iterator(i) {
       // grab the next middleware fn to exec
