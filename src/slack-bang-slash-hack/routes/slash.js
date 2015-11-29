@@ -1,4 +1,5 @@
 import {stack} from '../'
+import request from 'request'
 import find from '../methods/find'
 
 function parseSlackMessage(msg, callback) {
@@ -58,10 +59,10 @@ export default function slash(req, res, next) {
       let form    = msg
       let json    = true
       let query   = {url, headers, form, json}
-      req.post(query, (err, res)=> {
+      request.post(query, (err, res)=> {
         // blackhole!
       })
-      res.status(200).end()
+      res.status(200).json({text:'OK'})
     }
     // payload is passed to each middleware fn 
     // each middleware fn is executed in serial by callee executing next()
