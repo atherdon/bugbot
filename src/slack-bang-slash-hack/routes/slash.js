@@ -1,39 +1,5 @@
-import express from 'express'
-import async from 'async'
-import path from 'path'
-import {stack} from './'
-import register from './methods/register'
-import find from './methods/find'
-
-let router = express.Router()
-let tmpl = 'install'
-let install = (req, res)=>res.render(tmpl)
-
-// register the integration account (effectively the app owner)
-function auth(req, res, next) {
-  if (req.query.error === 'access_denied') {
-    res.status(403).render(tmpl, {
-      ok: false, 
-      msg: 'access denied'
-    })
-  }
-  else {
-    register(req.query.code, (err, success)=> {
-      if (err) {
-        res.status(500).render(tmpl, {
-          ok: false, 
-          msg: err
-        })
-      }
-      else {
-        res.render(tmpl, {
-          ok: true,
-          msg: 'success'
-        }) 
-      }
-    })
-  }
-}
+import {stack} from '../'
+import find from '../methods/find'
 
 function parseSlackMessage(msg, callback) {
   let cmds = stack()                                // all the commands
@@ -60,7 +26,7 @@ function parseSlackMessage(msg, callback) {
   }
   // lookup the account in the db
   find(payload.raw, (err, account)=> {
-
+    
     if (err) {
       payload.ok = false
       payload.text = 'find method returned an error'
@@ -80,7 +46,7 @@ function parseSlackMessage(msg, callback) {
 }
 
 // recives a slash command
-function slash(req, res, next) {
+export default function slash(req, res, next) {
   // parse out the payload and middleware for the Slack /command POST
   parseSlackMessage(req.body, (err, data)=> {
     // payload is passed to each middleware fn 
@@ -92,14 +58,8 @@ function slash(req, res, next) {
     ;(function iterator(i) {
       // grab the next middleware fn to exec
       let next = iterator.bind(null, i + 1)
-      // exec the current middleware with payload and msg
+      // exec the current middleware with args
       middleware[i].call({}, payload, message, next)
     })(0)
   })
 }
-
-router.get('/', install)
-router.post('/', slash)
-router.get('/auth', auth)
-
-export default router

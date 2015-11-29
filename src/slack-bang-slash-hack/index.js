@@ -1,4 +1,4 @@
-import app from './config'
+import app from './routes/configure'
 import button from './methods/button'
 import find from './methods/find'
 import save from './methods/save'
