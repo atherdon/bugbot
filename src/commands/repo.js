@@ -41,6 +41,6 @@ You can list all your repos by running:
   /bb repos
 
   `
+    message({text})
   }
-  message({text})
 }
