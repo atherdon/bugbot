@@ -3,13 +3,12 @@ import github from 'bugbot-github-issues'
 
 export default function repoCmd(payload, message) {
 
-  let parts = payload.message.text.split(' ')
-  let legit = parts.length >= 2 
-  let repo = parts[1]
-  let hasArg = parts[0] === 'repo' && repo != ''
-  let token = payload.account.github_token
+  let parts = payload.message.text? payload.message.text.split(' ') : []
+  let hasArg = parts.length >= 2 && parts[0] === 'repo' && parts[1] != ''
 
   if (hasArg) {
+    let token = payload.account.github_token
+    let repo = parts[1]
     github.repos(token, (err, repos)=> {
       if (err) {
         message({text:err})
