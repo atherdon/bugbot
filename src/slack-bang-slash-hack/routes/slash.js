@@ -2,6 +2,9 @@ import {stack} from '../'
 import request from 'request'
 import find from '../methods/find'
 
+let client_id = process.env.SLACK_CLIENT_ID
+let client_secret = process.env.SLACK_CLIENT_SECRET
+
 function parseSlackMessage(msg, callback) {
   let cmds = stack()                                // all the commands
   let sub  = msg.text? msg.text.split(' ')[0] : ''  // sub command (foo from '/bb foo')
@@ -57,22 +60,16 @@ export default function slash(req, res, next) {
       let url     = payload.message.response_url //+ '?token=' + payload.message.token
       let headers = {Accept: 'application/json'}
       let json    = true
-      //let client_id = process.env.SLACK_CLIENT_ID
-      //let client_secret = process.env.SLACK_CLIENT_SECRET
 
       let form = msg
       form.channel = payload.message.channel_id
-      /*
-      let form    = msg
-      form.token  = payload.message.token 
       form.client_id = client_id
       form.client_secret = client_secret
-      */
-      let query   = {url, headers, form, json}
-      request.post(query, (err, response)=> {
+
+      request.post({url, headers, form, json}, (err, response)=> {
         // blackhole!
         console.log('POST TO SLACK', msg, err, response.body)
-        res.json({text:res.body})
+        res.json({text:JSON.stringify({payload, b:response.body, err}, null, 2)})
       })
       //res.status(200).json({text:'```'+JSON.stringify(payload, null, 2)+'```'})
       //
