@@ -60,14 +60,13 @@ export default function slash(req, res, next) {
     // each middleware fn is executed in serial by callee executing next()
     let {payload, middleware} = data
 
-    // sends response to the Slack POST (halting the middleware exec)
+    // sends response to the Slack POST
     function message(msg) {
-      let url     = payload.message.response_url 
       msg.channel = payload.message.channel_id
+      let url     = payload.message.response_url 
       let body    = JSON.stringify(msg)
-      request.post({url, body}, (err, response)=> {
-        console.log('POST TO SLACK', msg, err, response.body)
-        res.json({text:JSON.stringify(payload, null, 2)})
+      request.post({url, body}, err=> {
+        res.json({text: err? err : '…'})
       })
     }
 
