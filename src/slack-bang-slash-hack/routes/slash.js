@@ -64,7 +64,8 @@ export default function slash(req, res, next) {
     function message(msg) {
       let url     = payload.message.response_url 
       msg.channel = payload.message.channel_id
-      request.post({url, JSON.stringify(body)}, (err, response)=> {
+      let body    = JSON.stringify(msg)
+      request.post({url, body}, (err, response)=> {
         console.log('POST TO SLACK', msg, err, response.body)
         res.json({text:JSON.stringify(payload, null, 2)})
       })
