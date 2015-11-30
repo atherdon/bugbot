@@ -56,29 +56,27 @@ export default function slash(req, res, next) {
   // parse out the payload and middleware for the Slack /command POST
   parseSlackMessage(req.body, (err, data)=> {
 
-    function message(msg) {
-      let url     = payload.message.response_url //+ '?token=' + payload.message.token
-      let headers = {Accept: 'application/json'}
-      let json    = true
-
-      let form = msg
-      form.channel = payload.message.channel_id
-      // form.client_id = client_id
-      // form.client_secret = client_secret
-
-      request.post({url, headers, form, json}, (err, response)=> {
-        // blackhole!
-        console.log('POST TO SLACK', msg, err, response.body)
-        res.json({text:JSON.stringify({form, payload, b:response.body, err}, null, 2)})
-      })
-      //res.status(200).json({text:'```'+JSON.stringify(payload, null, 2)+'```'})
-      //
-    }
     // payload is passed to each middleware fn 
     // each middleware fn is executed in serial by callee executing next()
     let {payload, middleware} = data
+
     // sends response to the Slack POST (halting the middleware exec)
-    //let message = msg=> res.json(msg)
+    function message(msg) {
+      // token? team? client_id? client_secret?
+      let url     = payload.message.response_url 
+      let headers = {Accept: 'application/json'}
+      let json    = true
+
+      let form = {}
+      form.payload = msg
+      form.payload.channel = payload.message.channel_id
+
+      request.post({url, headers, form, json}, (err, response)=> {
+        console.log('POST TO SLACK', msg, err, response.body)
+        res.json({text:JSON.stringify({form, payload, b:response.body, err}, null, 2)})
+      })
+    }
+
     // named iife for the first middleware fn
     ;(function iterator(i) {
       // grab the next middleware fn to exec
