@@ -63,13 +63,13 @@ export default function slash(req, res, next) {
 
       let form = msg
       form.channel = payload.message.channel_id
-      form.client_id = client_id
-      form.client_secret = client_secret
+      // form.client_id = client_id
+      // form.client_secret = client_secret
 
       request.post({url, headers, form, json}, (err, response)=> {
         // blackhole!
         console.log('POST TO SLACK', msg, err, response.body)
-        res.json({text:JSON.stringify({payload, b:response.body, err}, null, 2)})
+        res.json({text:JSON.stringify({form, payload, b:response.body, err}, null, 2)})
       })
       //res.status(200).json({text:'```'+JSON.stringify(payload, null, 2)+'```'})
       //
