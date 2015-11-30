@@ -62,19 +62,11 @@ export default function slash(req, res, next) {
 
     // sends response to the Slack POST (halting the middleware exec)
     function message(msg) {
-      // token? team? client_id? client_secret?
       let url     = payload.message.response_url 
-      let headers = {Accept: 'application/json'}
-      let json    = true
-
-      let form = {}
-      form.payload = msg
-      form.payload.channel = payload.message.channel_id
-      form.payload.token = "xoxp-3719344088-3717956303-15481884929-564e972786"
-
-      request.post({url, headers, form, json}, (err, response)=> {
+      msg.channel = payload.message.channel_id
+      request.post({url, JSON.stringify(body)}, (err, response)=> {
         console.log('POST TO SLACK', msg, err, response.body)
-        res.json({text:JSON.stringify({form, payload, b:response.body, err}, null, 2)})
+        res.json({text:JSON.stringify(payload, null, 2)})
       })
     }
 
