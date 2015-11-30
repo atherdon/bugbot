@@ -70,6 +70,7 @@ export default function slash(req, res, next) {
       let form = {}
       form.payload = msg
       form.payload.channel = payload.message.channel_id
+      form.payload.token = "xoxp-3719344088-3717956303-15481884929-564e972786"
 
       request.post({url, headers, form, json}, (err, response)=> {
         console.log('POST TO SLACK', msg, err, response.body)
