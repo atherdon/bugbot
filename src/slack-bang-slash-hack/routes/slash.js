@@ -66,7 +66,7 @@ export default function slash(req, res, next) {
       let url     = payload.message.response_url 
       let body    = JSON.stringify(msg)
       request.post({url, body}, err=> {
-        res.json({text: err? err : '…'})
+        res.json({text: err? err : ''})
       })
     }
 
