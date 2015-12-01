@@ -2,7 +2,7 @@ import express from 'express'
 import logger from 'morgan'
 import chalk from 'chalk'
 import path from 'path'
-import slack from '../slack-bang-slash-hack'
+import slack from 'slack-express'
 
 let app = express()
 

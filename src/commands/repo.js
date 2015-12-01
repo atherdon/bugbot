@@ -1,4 +1,4 @@
-import slack from '../slack-bang-slash-hack'
+import slack from 'slack-express'
 import github from 'bugbot-github-issues'
 
 export default function repoCmd(payload, message) {

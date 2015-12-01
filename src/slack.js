@@ -1,4 +1,4 @@
-import slack, {slash, start} from './slack-bang-slash-hack'
+import slack, {slash, start} from 'slack-express'
 
 // grab le commands
 import auth from './commands/auth'

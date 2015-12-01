@@ -1,4 +1,4 @@
-import slack from '../slack-bang-slash-hack'
+import slack from 'slack-express'
 
 export default function logout(payload, message) {
   let account = payload.account
