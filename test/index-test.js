@@ -2,6 +2,17 @@ import test from 'tape'
 import async from 'async'
 import request from 'request'
 import bot from '../'
+import env from 'node-env-file'
+import path from 'path'
+
+let mode = process.env.NODE_ENV
+let isDev = typeof mode === 'undefined' || mode === 'development'
+let isTest = mode === 'testing'
+
+if (isDev) {
+  console.log('MADE IT TO DEV')
+  env(path.join(process.cwd(), '.env'))
+}
 
 let handler
 let port = 3333
@@ -21,7 +32,6 @@ test('bot server starts', t=> {
   })
 })
 
-/*
 // this test looks crazier than it is
 // the first object is the entire thing
 test('bot routes are legit', t=> {
@@ -86,7 +96,7 @@ test('bot can recieve a POST from Slack', t=> {
     t.end()
   })
 })
-*/
+
 test('bot server close', t=> {
   t.plan(1)
   handler.close(x=> {

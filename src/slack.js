@@ -15,7 +15,7 @@ slash('/bb whoami', auth, whoami)
 slash('/bb logout', auth, logout)
 slash('/bb repo',   auth, repo)
 slash('/bb repos',  auth, repos)
-slash('/bb open',   auth, issues)
+slash('/bb issues', auth, issues)
 
 // if being called directly startup
 if (require.main === module) {

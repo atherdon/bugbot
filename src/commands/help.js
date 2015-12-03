@@ -9,11 +9,11 @@ let help = `
     /bb repo org/reponame ... set current repo
     /bb repos ............... list your repos
     /bb help ................ also shows help
-    /bb open ................ shows open issues
+    /bb issues .............. shows open issues
 
   To open a new Github Issue on the current repo:
 
-    /bb open your issue title here
+    /bb new Your issue title here
 
     And issue body here. Don't forget steps to reproduce!
 
