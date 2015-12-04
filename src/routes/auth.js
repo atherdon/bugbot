@@ -1,6 +1,6 @@
 import github from 'bugbot-github-issues'
 import jwt from 'jsonwebtoken'
-import slack from '../slack'
+import slack from 'slack-express'
 
 export default function auth(req, res) {
   // exchange the code for a token
