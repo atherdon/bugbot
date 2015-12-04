@@ -5,14 +5,14 @@ import index from './routes/index'
 import auth from './routes/auth'
 
 // slack routes
-app.use('/bugbot', slack)
+//app.use('/bugbot', slack)
 
 // http routes
-app.get('/', index)
-app.get('/bugbot/github/auth', auth)
+//app.get('/', index)
+slack.get('/bugbot/github/auth', auth)
 
-if (require.main === module) {
-  app.start()
-}
+//if (require.main === module) {
+//  app.start()
+//}
 
-export default app
+export default slack

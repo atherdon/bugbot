@@ -23,7 +23,7 @@ test('sanity', t=> {
   t.end()
 })
 
-
+/*
 test('bot server starts', t=> {
   t.plan(1)
   handler = bot.listen(port, x=> {
@@ -104,3 +104,4 @@ test('bot server close', t=> {
     t.end()
   })
 })
+*/
