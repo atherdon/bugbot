@@ -14,6 +14,9 @@ export default function auth(req, res) {
     // find the account in the system
     slack.find({user_id, team_id}, (err, account)=> {
       // if it exists (or not) write stuff to account obj
+      if (!account) {
+        let account = {}
+      }
       account.user_id = user_id
       account.team_id = team_id
       account.github_token = github_token
