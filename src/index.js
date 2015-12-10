@@ -1,3 +1,5 @@
+import env from 'node-env-file'
+import path from 'path'
 import slack, {slash, start} from 'slack-express'
 import github from './routes/auth'
 import index from './routes/index'
@@ -25,6 +27,9 @@ slack.get('/github/auth', github)
 
 // if being called directly startup
 if (require.main === module) {
+  let mode = process.env.NODE_ENV
+  let isDev = typeof mode === 'undefined' || mode === 'development'
+  if (isDev) env(path.join(process.cwd(), '.env'))
   start('bb')
 }
 

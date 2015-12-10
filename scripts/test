@@ -1,5 +1,5 @@
 #!/bin/sh
-for f in ./test/*
+for f in ./test/*-test.js
 do
   ./scripts/t $f
 done

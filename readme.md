@@ -7,6 +7,7 @@
 
 1. Clone this repo and run `npm i`.
 2. Create a `.env` file with:
+  - `APP_NAME=bugbot`
   - `GITHUB_CLIENT_ID`
   - `GITHUB_CLIENT_SECRET`
   - `SLACK_CLIENT_ID`
@@ -24,5 +25,6 @@
 ## Deploy
 
 - Slack requires SSL. http://serverfault.com/questions/393822/how-do-i-install-intermediate-certificates-in-aws
-- TODO Heroku
-- TODO Beanstalk
+- TODO Heroku deploy
+- TODO Beanstalk deploy
+- TODO Digital Ocean deploy

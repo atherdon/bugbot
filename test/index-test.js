@@ -7,12 +7,7 @@ import path from 'path'
 
 let mode = process.env.NODE_ENV
 let isDev = typeof mode === 'undefined' || mode === 'development'
-let isTest = mode === 'testing'
-
-if (isDev) {
-  console.log('MADE IT TO DEV')
-  env(path.join(process.cwd(), '.env'))
-}
+if (isDev) env(path.join(process.cwd(), '.env'))
 
 let handler
 let port = 3333
