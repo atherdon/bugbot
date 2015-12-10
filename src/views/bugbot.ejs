@@ -1,0 +1,20 @@
+<h1>Bugbot</h1>
+<p>Work with Github Issues from Slack.</p>
+
+<% if (ok) { %>
+  <div style=color:green;>
+    <%- msg %>
+  </div>
+<% } else { %>
+  <div style=color:red;>
+    <%- msg %>
+  </div>
+<% } %>
+
+<h3>Install</h3>
+<p><%- button %></p>
+
+<h2>Usage</h2>
+<pre>
+/bb [ help ]
+</pre>
