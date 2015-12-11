@@ -1,20 +1,43 @@
-<h1>Bugbot</h1>
-<p>Github issues for Slack</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bugbot</title>
+  <style>
+  <!-- build:include ../css/styles.min.css -->
+  <!-- /build -->
+  </style>
+</head>
+<body>
 
-<% if (ok) { %>
-  <div style=color:green;>
-    <%- msg %>
-  </div>
-<% } else { %>
-  <div style=color:red;>
-    <%- msg %>
-  </div>
-<% } %>
+  <header class="header">
+    <h1>Bugbot</h1>
+    <p>Github issues for Slack</p>
+  </header>
+  <section class="content">
+  </section>
+  <section class="updates">
+  </section>
+  <footer class="footer">
+  </footer>
 
-<h3>Install</h3>
-<p><%- button() %></p>
+  <% if (ok) { %> <div style=color:green;>
+      <%- msg %>
+    </div>
+  <% } else { %>
+    <div style=color:red;>
+      <%- msg %>
+    </div>
+  <% } %>
 
-<h2>Usage</h2>
-<pre>
-/bb [ help ]
+  <h3>Install</h3>
+  <p><%- button() %></p>
+
+  <h2>Usage</h2>
+  <pre>
+  /bb [ help ]
+
 </pre>
+</body>
+</html>
+

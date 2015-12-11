@@ -1,0 +1,3 @@
+#!/bin/sh
+htmlprocessor=./node_modules/htmlprocessor/bin/htmlprocessor
+$htmlprocessor ./dist/views/bugbot.ejs -o ./dist/views/bugbot.ejs
