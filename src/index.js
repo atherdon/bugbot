@@ -24,6 +24,7 @@ slash('/bb issues', auth, issues)
 // setup some http routes
 slack.get('/', index)
 slack.get('/github/auth', github)
+slack.set('template', path.join(__dirname, 'views/bugbot.ejs'))
 
 // if being called directly startup
 if (require.main === module) {
