@@ -1,0 +1,50 @@
+:root {
+  --c: #00BD7D;
+  --c-1: #48EAAB;
+  --c-2: #50E3C2;
+  --c-3: #454545;
+  --c-4: #C0C0C0;
+  --t: #565F5F;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+*:focus {
+  border: none;
+  outline: 1px solid var(--c-1);
+}
+
+body {
+  font-family: "Gibson", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 100;
+  color: var(--t);
+}
+
+.header {
+  background-color: var(--c);
+  color: var(--c-1);
+}
+
+.content {
+  color: var(--t);
+}
+
+.updates {
+  background-color: var(--c-1);
+}
+
+.open-source {
+  background-color: var(--c);
+  color: var(--c-1);
+}
+
+.footer {
+  background-color: #454545;
+  color: #C0C0C0;
+}
