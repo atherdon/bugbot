@@ -1,24 +1,18 @@
-let help = `
+let text = `I'm here to help!\n`
 
-  Welcome to Bugbot! 
-
-    /bb ..................... shows help
-    /bb whoami .............. return your account info
-    /bb logout .............. revoke your github access
-    /bb repo................. read your current repo
-    /bb repo org/reponame ... set current repo
-    /bb repos ............... list your repos
-    /bb help ................ also shows help
-    /bb issues .............. shows open issues
-
-  To open a new Github Issue on the current repo:
-
-    /bb new Your issue title here
-
-    And issue body here. Don't forget steps to reproduce!
-
-`
+let attachments = [
+  { 
+    title: 'Adding and accessing your Github Issues', 
+    color: '#2FA44F',
+    text: "`/bugbot add Your Issue Title` submit a new issue \n`/bugbot issues` show your open issues"
+  },
+  { 
+    title: 'Configuring Bugbot', 
+    color: '#E3E4E6',
+    text: "`/bugbot repo` display your current repo \n`/bugbot repo org/reponame` change your repo"
+  }
+]
 
 export default function help(payload, message) {
-  message({text:'```'+help+'```'})
+  message({text, attachments})
 }
