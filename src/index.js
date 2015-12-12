@@ -14,12 +14,12 @@ import repos from './commands/repos'
 import issues from './commands/issues'
 
 // register slash command middlewares
-slash('/bb',        auth, help)
-slash('/bb whoami', auth, whoami)
-slash('/bb logout', auth, logout)
-slash('/bb repo',   auth, repo)
-slash('/bb repos',  auth, repos)
-slash('/bb issues', auth, issues)
+slash('/bugbot',        auth, help)
+slash('/bugbot whoami', auth, whoami)
+slash('/bugbot logout', auth, logout)
+slash('/bugbot repo',   auth, repo)
+slash('/bugbot repos',  auth, repos)
+slash('/bugbot issues', auth, issues)
 
 // setup some http routes
 slack.get('/', index)
