@@ -1,6 +1,6 @@
 {
   "name": "@smallwins/bugbot",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "Slack native Github Issues",
   "main": "dist/index.js",
   "scripts": {
