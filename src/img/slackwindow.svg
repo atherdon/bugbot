@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" viewBox="0 0 354 354">
+  <defs>
+    <style>
+      .cls-1 { fill: #e7e7e7; } .cls-2 { fill: #fff; } .cls-2, .cls-3, .cls-4, .cls-5 { fill-rule: evenodd; } .cls-3 { fill: #ed5555; } .cls-4 { fill: #ffc600; } .cls-5 { fill: #38bd90; }
+    </style>
+  </defs>
+  <rect width="354" height="354" rx="10" ry="10" class="cls-1"/>
+  <path d="M350.46 32.745V341.61c0 4.888-1.307 8.85-6.195 8.85H8.735c-4.888 0-6.195-3.962-6.195-8.85V32.745h347.92z" class="cls-2"/>
+  <path d="M19 12c2.76 0 5 2.24 5 5s-2.24 5-5 5-5-2.24-5-5 2.24-5 5-5z" class="cls-3"/>
+  <path d="M35 12c2.76 0 5 2.24 5 5s-2.24 5-5 5-5-2.24-5-5 2.24-5 5-5z" class="cls-4"/>
+  <path d="M52 12c2.76 0 5 2.24 5 5s-2.24 5-5 5-5-2.24-5-5 2.24-5 5-5z" class="cls-5"/>
+</svg>

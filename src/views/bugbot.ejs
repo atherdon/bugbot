@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bugbot</title>
   <style>
   <!-- build:include ../css/styles.min.css -->
@@ -11,9 +12,18 @@
 <body>
 
   <header class="header">
-    <h1>Bugbot</h1>
-    <p>Github issues for Slack</p>
+    <div class="header-contents">
+      <div class="bugbot-icon">
+        <!-- build:include ../img/bugbot_icon.svg -->
+        <!-- /build -->
+      </div>
+      <!-- build:include ../img/bugbot_logo.svg -->
+      <!-- /build -->
+      <p>Github issues for Slack</p>
+      <%- button() %>
+    </div>
   </header>
+
   <section class="content">
   </section>
   <section class="updates">
@@ -31,7 +41,6 @@
   <% } %>
 
   <h3>Install</h3>
-  <p><%- button() %></p>
 
   <h2>Usage</h2>
   <pre>

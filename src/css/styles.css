@@ -23,12 +23,29 @@
 body {
   font-family: "Gibson", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 100;
+  text-align: center;
   color: var(--t);
 }
 
 .header {
+  padding-top: 2.5rem;
+  padding-right: 2rem;
+  padding-bottom: 2.5rem;
+  padding-left: 2rem;
   background-color: var(--c);
   color: var(--c-1);
+}
+
+.header-contents {
+  max-width: 21.625rem;
+  margin: 0 auto;
+}
+
+.bugbot-icon {
+  max-width: 5.75rem;
+  max-height: 5.75rem;
+  margin: 0 auto;
+  margin-bottom: 2rem;
 }
 
 .content {
@@ -48,3 +65,13 @@ body {
   background-color: #454545;
   color: #C0C0C0;
 }
+
+@media only screen and (min-width: 30em) {
+
+  .header {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+}
+

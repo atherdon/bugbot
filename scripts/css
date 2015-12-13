@@ -1,0 +1,8 @@
+#!/bin/sh
+rm -rf dist/css
+mkdir dist/css
+postcss=./node_modules/postcss-cli/bin/postcss
+$postcss --use postcss-custom-properties autoprefixer src/css/styles.css -o dist/css/temp.css
+cat dist/css/temp.css src/css/light.css > dist/css/styles.css
+$postcss --use cssnano dist/css/styles.css > dist/css/styles.min.css
+rm dist/css/temp.css
