@@ -4,5 +4,6 @@ mkdir dist
 babel=./node_modules/babel-cli/bin/babel.js
 $babel src --out-dir dist
 cp -R ./src/views ./dist/views
-./scripts/styles
+./scripts/css
+./scripts/img
 ./scripts/html

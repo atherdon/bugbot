@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="382" height="128" viewBox="0 0 382 128">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        stroke: #ccc;
+        stroke-width: 1px;
+      }
+    </style>
+  </defs>
+  <image xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAX4AAACAAQMAAAA2+5BiAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABlBMVEX///8AAABVwtN+AAAAAWJLR0QB/wIt3gAAAAlwSFlzAAALEgAACxIB0t1+/AAAAB1JREFUWMPtwTEBAAAAwqD1T20JT6AAAAAAAAC+BhiAAAGod2OUAAAAAElFTkSuQmCC" width="382" height="128"/>
+  <rect width="382" height="128" rx="10" ry="10" class="cls-1"/>
+</svg>
