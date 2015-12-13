@@ -91,17 +91,13 @@ test('bot can recieve a POST from Slack', t=> {
     if (err) {
       t.fail(err, err)
     }
-    else if (!res.body) {
-      t.fail('res.body not defined')
+    else if (res.statusCode === 200) {
+      t.ok(res, 'response was gud')
       console.log(res.statusCode)
     }
-    else if (res.body.error) {
-      t.fail(res.body.error, res.body.error)
-    }
     else {
-      let json = res.body
-      t.ok(json, 'got json')
-      console.log(json)
+      t.fail(res, 'status was not 200')
+      console.log(res.statusCode)
     }
     t.end()
   })
