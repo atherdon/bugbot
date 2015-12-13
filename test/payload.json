@@ -6,9 +6,9 @@
   "channel_name": "general",
   "user_id": "111111111",
   "user_name": "brianleroux",
-  "command": "/bb",
+  "command": "/bugbot",
   "text": "",
-  "response_url": "https://hooks.slack.com/commands/111111111/11111111111/111111111111111111111111",
+  "response_url": "http://localhost:6666",
   "ok": true,
   "account": {
     "url": "https://smallwins.slack.com/",

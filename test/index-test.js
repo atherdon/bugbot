@@ -1,3 +1,5 @@
+import express from 'express'
+import parser from 'body-parser'
 import test from 'tape'
 import async from 'async'
 import request from 'request'
@@ -18,7 +20,7 @@ test('sanity', t=> {
   t.end()
 })
 
-/*
+
 test('bot server starts', t=> {
   t.plan(1)
   handler = bot.listen(port, x=> {
@@ -31,9 +33,9 @@ test('bot server starts', t=> {
 // the first object is the entire thing
 test('bot routes are legit', t=> {
   let routesAndExpectedStatusCode = {
-    '/bugbot':200,
-    '/bugbot/auth?code=blah':500,
-    '/bugbot/auth?error=access_denied':403
+    '/':200,
+    '/auth?code=blah':500,
+    '/auth?error=access_denied':403
   }
   let routes = Object.keys(routesAndExpectedStatusCode)
   // we plan to have one test per route plus one for completion
@@ -66,9 +68,22 @@ test('bot routes are legit', t=> {
   })
 })
 
+let fakehandle, fake = express()
+test('can fake a server for recieving incoming webhooks', t=> {
+  fake.use(parser.urlencoded({extended:true}))
+  fake.use(parser.json())
+  fake.post('/', (req, res)=> {
+    console.log('got a post on 6666! ', req.body)
+    res.status(200).end()
+  })
+  fakehandle = fake.listen(6666)
+  t.ok(handler, 'got a server')
+  t.end()
+})
+
 test('bot can recieve a POST from Slack', t=> {
   let json = true
-  let url = `${base}/bugbot`
+  let url = `${base}`
   let form = require('./payload.json')
   let query = {url, form, json}
 
@@ -99,4 +114,11 @@ test('bot server close', t=> {
     t.end()
   })
 })
-*/
+
+test('fake slack server close', t=> {
+  t.plan(1)
+  fakehandle.close(x=> {
+    t.ok('wtf', 'server closed')
+    t.end()
+  })
+})
