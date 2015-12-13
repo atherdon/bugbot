@@ -2,6 +2,8 @@ import github from 'bugbot-github-issues'
 import jwt from 'jsonwebtoken'
 
 export default function auth(payload, message, next) {
+  message({text:'hi'})
+      /*
   if (payload.account.github_token) {
     next()
   }
@@ -21,4 +23,5 @@ export default function auth(payload, message, next) {
       message({text})
     })
   }
+  */
 }
