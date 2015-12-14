@@ -16,5 +16,6 @@ let attachments = [
 ]
 
 export default function help(payload, message) {
+    console.log('running help')
   message({text, attachments})
 }

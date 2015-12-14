@@ -6,7 +6,7 @@
   "channel_name": "general",
   "user_id": "111111111",
   "user_name": "brianleroux",
-  "command": "/bugbot",
+  "command": "/bugbot repos",
   "text": "",
   "response_url": "http://localhost:6666",
   "ok": true,
