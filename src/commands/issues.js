@@ -15,7 +15,10 @@ export default function repos(payload, message) {
         color,
         mrkdwn_in,
         title: i.title,
-        title_url: i.html_url
+        title_link: i.html_url,
+        author_name: i.user.login,
+        author_icon: i.user.avatar_url,
+        text: `#${i.number} opened ${i.created_at}`
       }
     })
     message({text, attachments})
