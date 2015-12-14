@@ -12,9 +12,11 @@ import repo from './commands/repo'
 import repos from './commands/repos'
 import repoIsSet from './commands/repo-is-set'
 import issues from './commands/issues'
+import add from './commands/add'
 
 // register slash command middlewares
 slash('/bugbot',        help)
+slash('/bugbot add',    auth, repIsSet, add)
 slash('/bugbot issues', auth, repoIsSet, issues)
 slash('/bugbot repo',   auth, repo, repoIsSet)
 slash('/bugbot repos',  auth, repos)

@@ -10,12 +10,9 @@ export default function whoami(payload, message) {
       let text = `You're currently logged into Bugbot with Github user ${usr}`
       let color = '#E3E4E6'
       let mrkdwn_in = ['text']
-      let author_name = user.login
-      let author_link = user.html_url 
-      let author_icon = user.avatar_url
-
+      let thumb_url = user.avatar_url
       message({attachments:[
-        {text, color, mrkdwn_in, author_name, author_link, author_icon}
+        {text, color, mrkdwn_in, thumb_url}
       ]})
     }
   })
