@@ -12,16 +12,14 @@ export default function auth(req, res) {
     let github_token = gh.access_token
     
     // find the account in the system
-    slack.find({user_id, team_id}, (err, account)=> {
+    slack.find({user_id, team_id}, (err, acct)=> {
       // if it exists (or not) write stuff to account obj
-      if (!account) {
-        let account = {}
-      }
+      let account = acct || {}
       account.user_id = user_id
       account.team_id = team_id
       account.github_token = github_token
       // save the token to the slack account
-      slack.save(account, (err, account)=> {
+      slack.save(account, err=> {
         let ok = err === null
         let msg = ok? 'Github authorized' : 'Failed to authorize Github'
         res.render('index', {ok, msg})
