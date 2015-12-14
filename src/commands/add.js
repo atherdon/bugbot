@@ -1,14 +1,29 @@
-
-let text = 'Okay, I created a new issue!'
-
-let attachments = [{ 
-  title: 'fake title', 
-  title_url: 'https://github.com/smallwins/bugbot',
-  color: '#2FA44F',
-  text: "Please don't forget to add your label, milestone, and assignee by editing the issue on Github.",
-  mrkdwn_in: ['text']
-}]
+import github from 'bugbot-github-issues'
 
 export default function add(payload, message) {
-  message({text, attachments})
+
+  let txt = {
+    title: payload.text.replace('add', ''),
+    token: payload.account.github_token,
+    repoID: payload.account.github_repo
+  }
+  
+  github.add(txt, (err, issue)=> {
+    if (err) {
+      message({text:err})
+    }
+    else {
+      let text = 'Okay, I created a new issue!'
+
+      let attachments = [{ 
+        title: txt.title, 
+        title_url: issue.url,
+        color: '#2FA44F',
+        text: "Please don't forget to add your label, milestone, and assignee by editing the issue on Github.",
+        mrkdwn_in: ['text']
+      }]
+      
+      message({text, attachments})  
+    }
+  })
 }
