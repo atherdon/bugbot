@@ -1,4 +1,5 @@
 import github from 'bugbot-github-issues'
+import ago from 'simple-timeago'
 
 export default function repos(payload, message) {
   let token = payload.account.github_token
@@ -18,7 +19,7 @@ export default function repos(payload, message) {
         title_link: i.html_url,
         author_name: i.user.login,
         author_icon: i.user.avatar_url,
-        text: `#${i.number} opened ${i.created_at}`
+        text: `#${i.number} opened ${ago(i.created_at)}`
       }
     })
     message({text, attachments})
