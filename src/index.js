@@ -16,10 +16,10 @@ import issues from './commands/issues'
 
 // register slash command middlewares
 slash('/bugbot',        auth, reposet, help)
-slash('/bugbot whoami', auth, reposet, whoami)
 slash('/bugbot repo',   auth, reposet, repo)
 slash('/bugbot issues', auth, reposet, issues)
 slash('/bugbot repos',  auth, repos)
+slash('/bugbot whoami', auth, whoami)
 slash('/bugbot logout', auth, logout)
 
 // setup some http routes
