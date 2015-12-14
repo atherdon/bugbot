@@ -17,14 +17,69 @@
         <!-- build:include ../img/bugbot_icon.svg -->
         <!-- /build -->
       </div>
-      <!-- build:include ../img/bugbot_logo.svg -->
-      <!-- /build -->
-      <p>Github issues for Slack</p>
-      <%- button() %>
+      <div class="bugbot-logo">
+        <!-- build:include ../img/bugbot_logo.svg -->
+        <!-- /build -->
+      </div>
+      <p class="bugbot-tag">
+        Github issues for Slack
+      </p>
+      <a
+        class="slack-link"
+        href="https://slack.com/oauth/authorize?scope=${scope}&client_id=${client_id}"
+        >
+        <!-- build:include ../img/addtoslackbutton.svg -->
+        <!-- /build -->
+      </a>
     </div>
   </header>
 
   <section class="content">
+    <div class="row between">
+      <div class="row-item">
+        <h1 class="content-title">
+          Add issues, see your repositories, etc
+        </h1>
+        <p class="content-text">
+          Venmo artisan poutine, kinfolk actually asymmetrical vinyl +1 whatever normcore echo park small batch disrupt aesthetic paleo. Shabby chic artisan tumblr, tilde next level affogato yuccie lumbersexual mustache crucifix tattooed. Tacos venmo gentrify disrupt, leggings cred sriracha waistcoat fixie. Before they sold out art party cornhole helvetica, yuccie normcore truffaut pabst sustainable lomo blue bottle godard.
+        </p>
+      </div>
+      <div class="row-item">
+        <!-- build:include ../img/slackwindow.svg -->
+        <!-- /build -->
+      </div>
+    </div>
+    <div class="row between">
+      <div class="row-item">
+        <h1 class="content-title">
+          Getting Started
+        </h1>
+        <h2>
+          Step 1 - Add to Slack
+        </h2>
+        <p class="content-text">
+          Hit the Add to Slack button! We’ll get you all setup. Once you’ve installed Bugbot into Slack just type /bugbot to see everything you can do!
+        </p>
+      </div>
+    </div>
+    <div class="row between">
+      <div class="row-item">
+        <h2>
+          Step 2 - Tell Your Team
+        </h2>
+        <p class="content-text">
+Venmo artisan poutine, kinfolk actually asymmetrical vinyl +1 whatever normcore echo park small batch disrupt aesthetic paleo. Shabby chic artisan tumblr, tilde next level affogato yuccie lumbersexual.</p>
+      </div>
+    </div>
+    <div class="row between">
+      <div class="row-item">
+        <h2>
+          Step 3 - Set Repo
+        </h2>
+        <p class="content-text">
+Venmo artisan poutine, kinfolk actually asymmetrical vinyl +1 whatever normcore echo park small batch disrupt aesthetic paleo. Shabby chic artisan tumblr, tilde next level affogato yuccie lumbersexual.</p>
+      </div>
+    </div>
   </section>
   <section class="updates">
   </section>

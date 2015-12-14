@@ -10,7 +10,7 @@ export default function auth(req, res) {
     let user_id      = jwt_token.user_id
     let team_id      = jwt_token.team_id
     let github_token = gh.access_token
-    
+
     // find the account in the system
     slack.find({user_id, team_id}, (err, account)=> {
       // if it exists (or not) write stuff to account obj
@@ -27,5 +27,5 @@ export default function auth(req, res) {
         res.render('index', {ok, msg})
       })
     })
-  })  
+  })
 }

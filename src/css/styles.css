@@ -5,6 +5,8 @@
   --c-3: #454545;
   --c-4: #C0C0C0;
   --t: #565F5F;
+  --w: 21.625rem;
+  --w-1: 53.125rem;
 }
 
 *,
@@ -37,7 +39,7 @@ body {
 }
 
 .header-contents {
-  max-width: 21.625rem;
+  max-width: var(--w);
   margin: 0 auto;
 }
 
@@ -45,11 +47,59 @@ body {
   max-width: 5.75rem;
   max-height: 5.75rem;
   margin: 0 auto;
-  margin-bottom: 2rem;
+  margin-bottom: 2.25rem;
+}
+
+.bugbot-logo {
+  padding-right: 0.3125rem;
+  padding-left: 0.3125rem;
+  margin-bottom: .25rem;
+}
+
+.bugbot-tag {
+  font-size: 2.39rem;
+  margin-bottom: 2.3125rem;
+}
+
+#add-to-slack-button {
+  max-width: 16.3125rem;
 }
 
 .content {
+  padding-top: 2rem;
+  padding-right: 2rem;
+  padding-left: 2rem;
+  margin: 0 auto;
+  text-align: left;
   color: var(--t);
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.row-item {
+  flex-grow: 1;
+  flex-basis: 100%;
+  max-width: 100%;
+}
+
+.between {
+  justify-content: space-between;
+}
+
+.content-title {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: var(--c);
+}
+
+.content-text {
+  margin-bottom: 2rem;
+  font-size: 1.125rem;
+  color: var(--c-3);
 }
 
 .updates {
@@ -66,11 +116,29 @@ body {
   color: #C0C0C0;
 }
 
-@media only screen and (min-width: 30em) {
+@media only screen and (min-width: 37.5em) {
 
   .header {
     padding-top: 5rem;
     padding-bottom: 5rem;
+  }
+
+  .content {
+    padding-top: 5rem;
+    max-width: var(--w-1);
+  }
+
+  .content-text {
+    margin-bottom: 0;
+  }
+
+  .row {
+    flex-direction: row-reverse;
+  }
+
+  .row-item {
+    flex-basis: 45%;
+    max-width: 45%;
   }
 
 }
