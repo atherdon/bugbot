@@ -7,7 +7,7 @@
   "user_id": "U03M3U48X",
   "user_name": "brianleroux",
   "command": "/bugbot",
-  "text": "repo",
+  "text": "add Adding an Issue from a bot",
   "response_url": "http://localhost:6666",
   "ok": true,
   "account": {

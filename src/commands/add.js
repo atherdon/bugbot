@@ -1,9 +1,9 @@
 import github from 'bugbot-github-issues'
 
-export default function add(payload, message) {
+export default function addIssueToGithub(payload, message) {
 
   let txt = {
-    title: payload.text.replace('add', ''),
+    title: payload.message.text.replace('add', ''),
     token: payload.account.github_token,
     repoID: payload.account.github_repo
   }
