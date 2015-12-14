@@ -11,15 +11,16 @@ import whoami from './commands/whoami'
 import logout from './commands/logout'
 import repo from './commands/repo'
 import repos from './commands/repos'
+import reposet from './commands/reposet'
 import issues from './commands/issues'
 
 // register slash command middlewares
-slash('/bugbot',        auth, help)
-slash('/bugbot whoami', auth, whoami)
-slash('/bugbot logout', auth, logout)
-slash('/bugbot repo',   auth, repo)
+slash('/bugbot',        auth, reposet, help)
+slash('/bugbot whoami', auth, reposet, whoami)
+slash('/bugbot repo',   auth, reposet, repo)
+slash('/bugbot issues', auth, reposet, issues)
 slash('/bugbot repos',  auth, repos)
-slash('/bugbot issues', auth, issues)
+slash('/bugbot logout', auth, logout)
 
 // setup some http routes
 slack.get('/', index)
