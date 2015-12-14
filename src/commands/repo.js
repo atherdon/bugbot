@@ -6,7 +6,7 @@ export default function repoCmd(payload, message, next) {
   let parts     = payload.message.text? payload.message.text.split(' ') : []
   let token     = payload.account.github_token
   let repo      = parts[1]
-  let isReading = parts.length > 1
+  let isReading = parts.length === 0
 
   if (isReading) {
     if (payload.account.github_repo) {
