@@ -6,7 +6,8 @@ export default function whoami(payload, message) {
       message({text:err})
     }
     else {
-      let text = `You're currently logged into Bugbot with Github user /`${user.login}/``
+      let usr = '`'+ user.login +'`'
+      let text = `You're currently logged into Bugbot with Github user ${usr}`
       let color = '#E3E4E6'
       let mrkdwn_in = ['text']
       let author_name = user.login
