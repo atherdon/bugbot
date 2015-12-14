@@ -8,7 +8,8 @@ export default function reposet(payload, message, next) {
   }
   else {
     // get the account repos
-    github.repos(payload.account.github_token, (err, repos)=> {
+    let token = payload.account.github_token
+    github.repos(token, (err, repos)=> {
       if (err) {
         message({text:err})
       }
