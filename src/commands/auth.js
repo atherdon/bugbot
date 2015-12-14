@@ -2,7 +2,6 @@ import github from 'bugbot-github-issues'
 import jwt from 'jsonwebtoken'
 
 export default function auth(payload, message, next) {
-    console.log('running auth')
   if (payload.account.github_token) {
     next()
   }
@@ -16,7 +15,7 @@ export default function auth(payload, message, next) {
 
       let color = '#E3E4E6'
       let mrkdwn_in = ['text']
-      let title = 'Uh oh, I need you to auth your Github account!>'
+      let title = 'Uh oh, I need you to auth your Github account!'
       let title_link = `${link}&state=${token}`
 
       let text = 'Hey there, It looks like you haven’t authorized a Github account yet! '

@@ -1,4 +1,3 @@
-import env from 'node-env-file'
 import path from 'path'
 import slack, {slash, start} from 'slack-express'
 import github from './routes/auth'
@@ -23,15 +22,12 @@ slash('/bugbot whoami', auth, whoami)
 slash('/bugbot logout', auth, logout)
 
 // setup some http routes
+slack.set('template', path.join(__dirname, 'views/bugbot.ejs'))
 slack.get('/', index)
 slack.get('/github/auth', github)
-slack.set('template', path.join(__dirname, 'views/bugbot.ejs'))
 
 // if being called directly startup
 if (require.main === module) {
-  let mode = process.env.NODE_ENV
-  let isDev = typeof mode === 'undefined' || mode === 'development'
-  if (isDev) env(path.join(process.cwd(), '.env'))
   start('bb')
 }
 
