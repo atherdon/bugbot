@@ -9,8 +9,14 @@ export default function repoCmd(payload, message, next) {
   let isReading = parts.length === 1
 
   if (isReading) {
-    if (payload.account.github_repo) {
-      message({text:payload.account.github_repo})
+    let repo = payload.account.github_repo
+    if (repo) {
+      let link = `<https://github.com/${repo}|${repo}>`
+      let text = `Here's the repo I'm currently using to send and receive your Github Issues: ${link}`
+      let color = '#E3E4E6'
+      let mrkdwn_in = ['text']
+         
+      message({attachments:[{text, color, mrkdwn_in}]})
     }
     else {
       next()
@@ -31,7 +37,7 @@ export default function repoCmd(payload, message, next) {
           })
         }
         else {
-          message({text:`Github has nothing for ${repo}.`})
+          message({text:`Sorry, Github not showing me ${repo}.`})
         }
       }
     })
