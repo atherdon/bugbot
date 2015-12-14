@@ -1,7 +1,6 @@
 import slack from 'slack-express'
 import github from 'bugbot-github-issues'
 
-
 export default function repoCmd(payload, message, next) {
 
   let parts     = payload.message.text? payload.message.text.split(' ') : []
@@ -10,14 +9,10 @@ export default function repoCmd(payload, message, next) {
   let isReading = parts.length > 1
 
   if (isReading) {
-    // check for repo 
-    let text = payload.account.github_repo
-    if (text) {
-      // if it exists return it
-      message({text})
+    if (payload.account.github_repo) {
+      message({text:payload.account.github_repo})
     }
     else {
-      // if it does not continue to reposet
       next()
     }
   }
@@ -36,7 +31,7 @@ export default function repoCmd(payload, message, next) {
           })
         }
         else {
-          message({text:`Bzzz. Github has nothing for ${repo}.`})
+          message({text:`Github has nothing for ${repo}.`})
         }
       }
     })

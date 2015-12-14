@@ -10,13 +10,13 @@ import whoami from './commands/whoami'
 import logout from './commands/logout'
 import repo from './commands/repo'
 import repos from './commands/repos'
-import reposet from './commands/reposet'
+import repoIsSet from './commands/repo-is-set'
 import issues from './commands/issues'
 
 // register slash command middlewares
-slash('/bugbot',        auth, reposet, help)
-slash('/bugbot issues', auth, reposet, issues)
-slash('/bugbot repo',   auth, repo, reposet)
+slash('/bugbot',        help)
+slash('/bugbot issues', auth, repoIsSet, issues)
+slash('/bugbot repo',   auth, repo, repoIsSet)
 slash('/bugbot repos',  auth, repos)
 slash('/bugbot whoami', auth, whoami)
 slash('/bugbot logout', auth, logout)
