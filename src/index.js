@@ -16,7 +16,7 @@ import add from './commands/add'
 
 // register slash command middlewares
 slash('/bugbot',        help)
-slash('/bugbot add',    auth, repIsSet, add)
+slash('/bugbot add',    auth, repoIsSet, add)
 slash('/bugbot issues', auth, repoIsSet, issues)
 slash('/bugbot repo',   auth, repo, repoIsSet)
 slash('/bugbot repos',  auth, repos)
