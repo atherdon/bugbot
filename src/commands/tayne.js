@@ -9,7 +9,7 @@ export default function tayne(payload, message) {
   message({
     response_type:'in_channel',
     attachments:[{
-      title:'The bestest :sparkles:',
+      title:':bust_in_silhouette: Cinco Identity Generator 2.5 :coffee:',
       title_link:'https://www.youtube.com/watch?v=MHWBEK8w_YY',
       color:'#36a64f',
       mrkdwn_in:['title'],
