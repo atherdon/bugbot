@@ -10,6 +10,7 @@
   --slack-code-color: #CC2255;
   --slack-code-bg: #F7F7F9;
   --slack-code-border: #E1E1E8;
+  --notify: #FF4C5F;
   --t: #565F5F;
   --w: 25rem;
   --w-1: 60rem;
@@ -43,6 +44,38 @@ body {
   border-radius: 3px;
   background-color: var(--slack-code-bg);
   color: var(--slack-code-color);
+}
+
+.notify {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  font-size: 1.25rem;
+  background-color: var(--c-3);
+  color: var(--c-0);
+}
+
+.excite {
+  margin-top: -5px;
+  font-size: 3rem;
+  color: var(--c-1);
+}
+
+.bummer {
+  margin-top: -5px;
+  font-size: 3rem;
+  color: var(--notify);
+}
+
+.anchor:hover,
+.anchor:visited,
+.anchor:active,
+.anchor {
+  text-decoration: none;
+  font-weight: 500;
+  color: var(--notify);
+  border-bottom: 1px solid var(--notify);
 }
 
 .header {

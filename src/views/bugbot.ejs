@@ -4,12 +4,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bugbot</title>
+  <link rel="icon" type="image/x-icon" href="https://s3-us-west-1.amazonaws.com/bugbot/favicon.ico">
   <style>
   <!-- build:include ../css/styles.min.css -->
   <!-- /build -->
   </style>
 </head>
 <body>
+
+  <% if (ok) { %>
+
+    <% if (msg.length) { %>
+
+      <section class="notify">
+        <span class="excite">Hooray!</span> &nbsp; You've installed Bugbot on your team's Slack &nbsp; <a class="anchor" href="#getting-started">Go to the next step</a>
+      </section>
+
+    <% } %>
+
+  <% } else { %>
+
+    <section class="notify">
+      <span class="bummer">Oh noes!</span> &nbsp; That was not supposed to happen. Let's try that again.
+    </section>
+
+  <% } %>
+
 
   <header class="header">
     <div class="header-contents">
@@ -51,6 +71,7 @@
     </div>
     <div class="row between">
       <div class="row-item">
+        <a id="getting-started"></a>
         <h1 class="heading">
           Getting Started
         </h1>
