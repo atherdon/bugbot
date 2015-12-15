@@ -6,12 +6,13 @@
   --c-3: #454545;
   --c-4: #C0C0C0;
   --c-5: #C3C3C3;
+  --c-6: #888888;
   --slack-code-color: #CC2255;
   --slack-code-bg: #F7F7F9;
   --slack-code-border: #E1E1E8;
   --t: #565F5F;
-  --w: 21.625rem;
-  --w-1: 53.125rem;
+  --w: 25rem;
+  --w-1: 60rem;
   --w-2: 40rem;
 }
 
@@ -66,8 +67,8 @@ body {
 }
 
 .bugbot-logo {
-  padding-right: 0.3125rem;
-  padding-left: 0.3125rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
   margin-bottom: .25rem;
 }
 
@@ -92,7 +93,7 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  margin-bottom: 3rem;
+  margin-bottom: 6rem;
 }
 
 .row-item {
@@ -273,6 +274,10 @@ body {
   opacity: 0.75;
 }
 
+.worries {
+  color: var(--c);
+}
+
 .open-source {
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
@@ -297,7 +302,7 @@ body {
   padding-top: 3.75rem;
   padding-bottom: 2rem;
   background-color: var(--c-3);
-  color: var(--c-4);
+  color: var(--c-6);
 }
 
 .footer-contents {
