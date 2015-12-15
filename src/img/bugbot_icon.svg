@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="bugbot-icon" viewBox="0 0 92 92">
+  <style>
+    .bugbot-icon-bg{fill:#48EAAB;} .bugbot-icon-1{fill:#02CE1B;} .bugbot-icon-2{fill:#029925;} .bugbot-icon-3{fill:#303123;} .bugbot-icon-4{fill:#4D4D4D;} .bugbot-icon-5{fill:#333333;} .bugbot-icon-6{fill:#FFFFFF;}
+  </style>
+  <path d="M87 92H5c-2.8 0-5-2.2-5-5V5c0-2.8 2.2-5 5-5h82c2.8 0 5 2.2 5 5v82c0 2.8-2.2 5-5 5z" class="bugbot-icon-bg"/>
+  <path d="M32.4 17.4v-3.3h3.4v-5h-7.9v8.2c0 10 8.1 18 18.1 18v-4.6c-7.4.1-13.5-5.9-13.6-13.3z" class="bugbot-icon-1"/>
+  <path d="M56.2 9.1V14h3.4v3.3c-.1 7.4-6.2 13.4-13.6 13.4v4.6c10 0 18.1-8 18.2-17.9V9.1h-8z" class="bugbot-icon-2"/>
+  <path d="M46.1 30.7l-3.7 2.4-.8 7.9h1.1v5.6h10.5V41h2.5v-8.4c-3.4-.3-6.5-.9-9.6-1.9z" class="bugbot-icon-3"/>
+  <path d="M36.4 32.5v8.4h2.5v5.6H46V30.7h-.1c-3.1 1-6.3 1.6-9.5 1.8z" class="bugbot-icon-4"/>
+  <path d="M30.7 57.7v5.5h-5.8v3.4H34v-5.5h8.9v-3.4H34zm-.1 14.8v10.4h3.3v-7h9v-3.4h-9z" class="bugbot-icon-5"/>
+  <path d="M30.7 55.4v5.5h-5.8v3.3H34v-5.5h8.9v-3.3H34zm-.1 14.8v10.3h3.3v-7h9v-3.3h-9z" class="bugbot-icon-4"/>
+  <path d="M30.7 52v-5.6h-5.9v-3.3H34v5.5h8.9V52H34zm30.2 5.7v5.5h5.9v3.4h-9.2v-5.5h-8.7v-3.4h8.7zm0 14.8v10.4h-3.3v-7h-8.7v-3.4h8.7z" class="bugbot-icon-5"/>
+  <path d="M30.7 49.6v-5.5h-5.9v-3.4H34v5.6h8.9v3.3H34z" class="bugbot-icon-4"/>
+  <path d="M61.3 52v-5.6h5.9v-3.3H58v5.5h-8.9V52H58z" class="bugbot-icon-5"/>
+  <path d="M61.3 49.6v-5.5h5.9v-3.4H58v5.6h-8.9v3.3H58zm-.4 5.8v5.5h5.9v3.3h-9.2v-5.5h-8.7v-3.3h8.7zm0 14.8v10.3h-3.3v-7h-8.7v-3.3h8.7z" class="bugbot-icon-4"/>
+  <path d="M49.7 48.3l.8-2H42l1.7 2H34v20.3c0 6 4.9 10.9 10.9 10.9h2.2c6 0 10.9-4.9 10.9-10.9V48.3h-8.3z" class="bugbot-icon-3"/>
+  <path d="M44 46.2H34v18.6c0 5.5 4.5 10 10 10V46.2z" class="bugbot-icon-1"/>
+  <path d="M48 46.2v28.6c5.5 0 10-4.5 10-10V46.2H48z" class="bugbot-icon-2"/>
+  <circle cx="39" cy="51.6" r="2.6" class="bugbot-icon-6"/>
+</svg>
