@@ -7,11 +7,13 @@ export default function tayne(payload, message) {
   ]
   let index = Math.floor(Math.random() * (knowledge.length - 1) + 1)
   message({
-    mrkdwn: true,
     response_type:'in_channel',
-    text: '<https://www.youtube.com/watch?v=MHWBEK8w_YY|The bestest.> :sparkles:',
     attachments:[{
-      'image_url':knowledge[index]
+      title:'The bestest :sparkles:',
+      title_link:'https://www.youtube.com/watch?v=MHWBEK8w_YY',
+      color:'#36a64f',
+      mrkdwn_in:['title'],
+      image_url:knowledge[index]
     }]
   })
 }
