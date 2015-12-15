@@ -5,7 +5,8 @@ export default function repos(payload, message) {
   let token = payload.account.github_token
   let repo = payload.account.github_repo
   let link = `<https://github.com/${repo}|${repo}>`
-  let text = `Here are the open issues for ${link}:`
+
+  let text = `Okay, hang tight! Sometimes it can take a moment to fetch a lot of issues. (To see all issues, head on over ${link}.)\n`
 
   github.issues(token, repo, (err, issues)=> {
     // turn the github issues into slack attachments
