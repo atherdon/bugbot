@@ -1,14 +1,28 @@
 import slack from 'slack-express'
 import github from 'bugbot-github-issues'
 
-export default function repoCmd(payload, message) {
+export default function repoCmd(payload, message, next) {
 
-  let parts = payload.message.text? payload.message.text.split(' ') : []
-  let hasArg = parts.length >= 2 && parts[0] === 'repo' && parts[1] != ''
+  let parts     = payload.message.text? payload.message.text.split(' ') : []
+  let token     = payload.account.github_token
+  let repo      = parts[1]
+  let isReading = parts.length === 1
 
-  if (hasArg) {
-    let token = payload.account.github_token
-    let repo = parts[1]
+  if (isReading) {
+    let repo = payload.account.github_repo
+    if (repo) {
+      let link = `<https://github.com/${repo}|${repo}>`
+      let text = `Here's the repo I'm currently using to send and receive your Github Issues: ${link}`
+      let color = '#E3E4E6'
+      let mrkdwn_in = ['text']
+         
+      message({attachments:[{text, color, mrkdwn_in}]})
+    }
+    else {
+      next()
+    }
+  }
+  else {
     github.repos(token, (err, repos)=> {
       if (err) {
         message({text:err})
@@ -23,31 +37,10 @@ export default function repoCmd(payload, message) {
           })
         }
         else {
-          message({text:`Bzzz. Github has nothing for ${repo}.`})
+          message({text:`Sorry, Github not showing me ${repo}.`})
         }
       }
     })
-  }
-  else {
-    let repo = payload.account.github_repo
-    let hasRepo = `
-    
-Hey there! It looks like your Github account is authorized (yay!), and your Github repo is configured (double yay!) and set to: ${repo}. If you’d like to change this repo for all channels in this Slack, please enter \`/bugbot repo username/reponame\`
-
-    `
-    let noRepo = `
-
-Hey there! It looks like your Github account is authorized (yay!), but we still need to configure a Github repo so we know where to send and receive your Github Issues. 
-        
-Select a repo by running:
-       
-  /bb repo username/reponame
-
-You can list all your repos by running:
-
-  /bb repos
-
-    `
-    message({text:repo? hasRepo : noRepo})
-  }
+  } 
+///
 }

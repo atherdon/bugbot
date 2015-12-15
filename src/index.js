@@ -1,4 +1,3 @@
-import env from 'node-env-file'
 import path from 'path'
 import slack, {slash, start} from 'slack-express'
 import github from './routes/auth'
@@ -11,26 +10,26 @@ import whoami from './commands/whoami'
 import logout from './commands/logout'
 import repo from './commands/repo'
 import repos from './commands/repos'
+import repoIsSet from './commands/repo-is-set'
 import issues from './commands/issues'
+import add from './commands/add'
 
 // register slash command middlewares
-slash('/bugbot',        auth, help)
+slash('/bugbot',        help)
+slash('/bugbot add',    auth, repoIsSet, add)
+slash('/bugbot issues', auth, repoIsSet, issues)
+slash('/bugbot repo',   auth, repo, repoIsSet)
+slash('/bugbot repos',  auth, repos)
 slash('/bugbot whoami', auth, whoami)
 slash('/bugbot logout', auth, logout)
-slash('/bugbot repo',   auth, repo)
-slash('/bugbot repos',  auth, repos)
-slash('/bugbot issues', auth, issues)
 
 // setup some http routes
+slack.set('template', path.join(__dirname, 'views/bugbot.ejs'))
 slack.get('/', index)
 slack.get('/github/auth', github)
-slack.set('template', path.join(__dirname, 'views/bugbot.ejs'))
 
 // if being called directly startup
 if (require.main === module) {
-  let mode = process.env.NODE_ENV
-  let isDev = typeof mode === 'undefined' || mode === 'development'
-  if (isDev) env(path.join(process.cwd(), '.env'))
   start('bb')
 }
 

@@ -1,13 +1,13 @@
 {
   "token": "111111111111111111111111",
-  "team_id": "111111111",
+  "team_id": "T03M5A42L",
   "team_domain": "smallwins",
   "channel_id": "111111111",
   "channel_name": "general",
-  "user_id": "111111111",
+  "user_id": "U03M3U48X",
   "user_name": "brianleroux",
   "command": "/bugbot",
-  "text": "",
+  "text": "issues",
   "response_url": "http://localhost:6666",
   "ok": true,
   "account": {
