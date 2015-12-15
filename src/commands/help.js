@@ -10,7 +10,7 @@ let attachments = [
   { 
     title: 'Configuring Bugbot', 
     color: '#E3E4E6',
-    text: "`/bugbot repo` display your current repo \n`/bugbot repo org/reponame` change your repo \n`/bugbot repo` list your repos \n`/bugbot whoami` display your Github user \n`/bugbot help` you're lookin' at it! \n`/bugbot logout` revoke Bugbot's access to your Github",
+    text: "`/bugbot repo` display your current repo \n`/bugbot repo org/reponame` change your repo \n`/bugbot repos` list your repos \n`/bugbot whoami` display your Github user \n`/bugbot help` you're lookin' at it! \n`/bugbot logout` revoke Bugbot's access to your Github",
     mrkdwn_in: ['text']
   }
 ]

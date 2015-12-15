@@ -22,6 +22,7 @@ export default function auth(req, res) {
       slack.save(account, err=> {
         let ok = err === null
         let msg = ok? 'Github authorized' : 'Failed to authorize Github'
+        console.log(msg, err)
         res.render(req.app.get('template'), {ok, msg})
       })
     })
