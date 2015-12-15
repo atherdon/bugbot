@@ -138,10 +138,11 @@ body {
 }
 
 .open-source-icon {
+  max-width: 5.75rem;
+  max-height: 5.75rem;
   margin-right: auto;
   margin-bottom: 1.5rem;
   margin-left: auto;
-  max-width: 4.6875rem;
 }
 
 .bugbot-heading {
@@ -322,6 +323,10 @@ body {
 .bold {
   font-weight: 700;
   letter-spacing: 0.7px;
+}
+
+.loves {
+  margin-bottom: 0.5rem;
 }
 
 @media only screen and (min-width: 37.5em) {
