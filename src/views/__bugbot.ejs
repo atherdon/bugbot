@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bugbot</title>
+  <style>
+  <!-- build:include ../css/styles.min.css -->
+  <!-- /build -->
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-contents">
+      <div class="bugbot-icon">
+        <!-- build:include ../img/bugbot_icon.svg -->
+        <!-- /build -->
+      </div>
+      <div class="bugbot-logo">
+        <!-- build:include ../img/bugbot_logo.svg -->
+        <!-- /build -->
+      </div>
+      <p class="bugbot-tag">
+        Finally, your Github Issues in Slack
+      </p>
+      <a
+        class="slack-link"
+        href="https://slack.com/oauth/authorize?scope=${scope}&client_id=${client_id}"
+        >
+        <!-- build:include ../img/addtoslackbutton.svg -->
+        <!-- /build -->
+      </a>
+    </div>
+  </header>
+
+  <section class="content">
+    <div class="row between reverse">
+      <div class="row-item">
+        <h1 class="heading">
+          Add issues, see your repositories, etc
+        </h1>
+        <p class="content-text">
+         Switching out of Slack to do a basic thing — like manage our Github Issues — was driving us crazy. So we made Bugbot! Just install it once for you team, and everyone on it can access their issues (and create new ones) from their Github accounts. Just like that.
+       </p>
+      </div>
+      <div class="row-item">
+        <!-- build:include ../img/slackwindow.svg -->
+        <!-- /build -->
+      </div>
+    </div>
+    <div class="row between">
+      <div class="row-item">
+        <h1 class="heading">
+          Getting Started
+        </h1>
+        <h2 class="sub-heading">
+          Step 1 - Add to Slack
+        </h2>
+        <p class="content-text">
+          Okay, this part is easy! Just hit the Add to Slack button, and walk through Slack’s steps for installation.
+        </p>
+      </div>
+      <div class="row-item">
+        <div class="sparks-container">
+          <div class="sparks">
+            <!-- build:include ../img/buttonsparks.svg -->
+            <!-- /build -->
+          </div>
+          <div class="sparks-button">
+            <!-- build:include ../img/addtoslackbutton-nope.svg -->
+            <!-- /build -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row between reverse">
+      <div class="row-item">
+        <h2 class="sub-heading">
+          Step 2 - Tell Your Team
+        </h2>
+        <p class="content-text">
+          Once you’ve got Bugbot integrated with your Slack team, let your team know! (We recommend sending an alert with the <span class="code"> @channel</span> command in an announcements room, if you have one.
+        </p>
+      </div>
+      <div class="row-item">
+        <!-- build:include ../img/screenshot_tellteam.svg -->
+        <!-- /build -->
+      </div>
+    </div>
+    <div class="row between">
+      <div class="row-item">
+        <h2 class="sub-heading">
+          Step 3 - Authenticate with Github
+        </h2>
+        <p class="content-text">
+          Anyone who wants to use Bugbot will need to register their Github account, which is super easy. Just run <span class="code">/bugbot</span> to get authenticated.
+        </p>
+      </div>
+      <div class="row-item">
+        <!-- build:include ../img/github_logo.svg -->
+        <!-- /build -->
+      </div>
+    </div>
+    <div class="row between reverse">
+      <div class="row-item">
+        <h2 class="sub-heading">
+          Step 4 - Set your repo
+        </h2>
+        <p class="content-text">
+          Bugbot is super flexible, so everyone can be reading and writing to different Github repos. Run <span class="code">/bugbot repos</span> to find your repo, then run <span class="code">/bugbot repo org/reponame</span> to set it.
+        </p>
+      </div>
+      <div class="row-item">
+        <!-- build:include ../img/screenshot_configurerepo.svg -->
+        <!-- /build -->
+      </div>
+    </div>
+    <div class="row between">
+      <div class="row-item">
+        <h2 class="sub-heading">
+          Then - Create Github Issues in Slack!
+        </h2>
+        <p class="content-text">
+          Gone are the days of leaving Slack to create a new Github Issue. Just run <span class="code">/bugbot add [your issue name]</span> to create a new issue!
+        </p>
+      </div>
+      <div class="row-item">
+        <!-- build:include ../img/screenshot_newissue.svg -->
+        <!-- /build -->
+      </div>
+    </div>
+    <div class="row between reverse">
+      <div class="row-item">
+        <h2 class="sub-heading">
+          And then - Keep an eye on your Issues
+        </h2>
+        <p class="content-text">
+          A list of your Github Issues is now available in Slack, too. Run <span class="code">/bugbot issues</span> to stay up to date on your latest issues.
+        </p>
+      </div>
+      <div class="row-item">
+        <!-- build:include ../img/screenshot_issuelist.svg -->
+        <!-- /build -->
+      </div>
+    </div>
+  </section>
+
+  <section class="updates">
+    <div class="updates-contents">
+      <h1 class="updates-heading">
+        We're just getting started
+      </h1>
+      <p class="updates-message">
+       Bugbot is a project built by Small Wins, we’re working on some amazing things. This copy should be way better then this for sure but about this long.
+      </p>
+      <form class="form" action="/email" method="POST">
+        <label for="email" class="label">
+          <input class="input" type="email" name="email" placeholder="Here's my email">
+          <button class="button">
+            Thanks!
+          </button>
+        </label>
+      </form>
+      <p>
+        Oh and don’t worry, this whole thing has a 0% forecast of spam. 🙌
+      </p>
+    </div>
+  </section>
+
+  <section class="open-source">
+    <div class="open-source-contents">
+      <h1 class="open-source-heading">
+        Small Wins Open Source Projects
+      </h1>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-contents">
+      <!-- build:include ../img/pencilpapercat.svg -->
+      <!-- /build -->
+    </div>
+  </footer>
+
+</body>
+</html>
+
