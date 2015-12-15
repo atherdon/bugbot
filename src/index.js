@@ -14,6 +14,7 @@ import repos from './commands/repos'
 import repoIsSet from './commands/repo-is-set'
 import issues from './commands/issues'
 import add from './commands/add'
+import tayne from './commands/tayne'
 
 // register slash command middlewares
 slash('/bugbot help',   help)
@@ -24,6 +25,7 @@ slash('/bugbot repo',   auth, repo, repoIsSet)
 slash('/bugbot repos',  auth, repos)
 slash('/bugbot whoami', auth, whoami)
 slash('/bugbot logout', auth, logout)
+slash('/bugbot tayne',  tayne)
 
 // setup some http routes
 slack.set('template', path.join(__dirname, 'views/bugbot.ejs'))
