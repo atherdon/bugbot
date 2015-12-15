@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" id=add-to-slack-button viewBox="0 0 271 76">
+<svg xmlns="http://www.w3.org/2000/svg" id="add-to-slack-button" viewBox="0 0 271 76">
   <style>
     .slack-button-0{fill:#FFFFFF;} .slack-button-1{fill:#E8A723;} .slack-button-2{fill:#3EB890;} .slack-button-3{fill:#E01765;} .slack-button-4{fill:#472A49;} .slack-button-5{fill:#CC2027;} .slack-button-6{fill:#70CADB;} .slack-button-7{fill:#1A937D;} .slack-button-8{fill:#65863A;} .slack-button-9{fill:#3C444C;}
   </style>
