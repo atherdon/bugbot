@@ -41,6 +41,6 @@
     "node-uuid": "^1.4.7",
     "request": "^2.67.0",
     "simple-timeago": "^1.0.0",
-    "slack-express": "^5.7.0"
+    "slack-express": "^5.8.0"
   }
 }

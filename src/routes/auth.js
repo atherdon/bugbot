@@ -23,7 +23,8 @@ export default function auth(req, res) {
         let ok = err === null
         let msg = ok? 'Github authorized' : 'Failed to authorize Github'
         console.log(msg, err)
-        res.render(req.app.get('template'), {ok, msg})
+        let client_id = process.env.SLACK_CLIENT_ID
+        res.render(req.app.get('template'), {ok, msg, client_id})
       })
     })
   })

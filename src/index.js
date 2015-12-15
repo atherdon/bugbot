@@ -27,7 +27,6 @@ slash('/bugbot logout', auth, logout)
 
 // setup some http routes
 slack.set('template', path.join(__dirname, 'views/bugbot.ejs'))
-slack.get('/', index)
 slack.get('/github/auth', github)
 
 // if being called directly startup

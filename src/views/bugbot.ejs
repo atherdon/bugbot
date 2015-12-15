@@ -26,7 +26,7 @@
       </p>
       <a
         class="slack-link"
-        href="https://slack.com/oauth/authorize?scope=${scope}&client_id=${client_id}"
+        href="https://slack.com/oauth/authorize?scope=<%- scope %>&client_id=<%- client_id %>"
         >
         <!-- build:include ../img/addtoslackbutton.svg -->
         <!-- /build -->
@@ -68,8 +68,13 @@
             <!-- /build -->
           </div>
           <div class="sparks-button">
-            <!-- build:include ../img/addtoslackbutton-nope.svg -->
-            <!-- /build -->
+            <a
+              class="slack-link"
+              href="https://slack.com/oauth/authorize?scope=<%- scope %>&client_id=<%- client_id %>"
+              >
+              <!-- build:include ../img/addtoslackbutton-nope.svg -->
+              <!-- /build -->
+            </a>
           </div>
         </div>
       </div>
