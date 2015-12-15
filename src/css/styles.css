@@ -92,7 +92,7 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .row-item {
@@ -109,14 +109,58 @@ body {
   flex-direction: row;
 }
 
+.card {
+  display: block;
+  width: 21.875rem;
+  height: 18.75rem;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 2rem;
+  padding: 3rem;
+  text-decoration: none;
+  background-color: var(--c-0);
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+}
+
+.card:hover,
+.card:active,
+.card:visited {
+  color: var(--c-3);
+  text-decoration: none;
+}
+
+.card-heading {
+  font-size: 2rem;
+  font-weight: 100;
+  margin-bottom: 0.5rem;
+}
+
+.open-source-icon {
+  margin-right: auto;
+  margin-bottom: 1.5rem;
+  margin-left: auto;
+  max-width: 4.6875rem;
+}
+
+.bugbot-heading {
+  color: #0193FA;
+}
+
+.slack-express-heading {
+  color: #50EC32;
+}
+
 .heading {
   margin-bottom: 2rem;
   font-size: 2rem;
+  font-weight: 500;
   color: var(--c);
 }
 
 .sub-heading {
   margin-bottom: 0.5rem;
+  font-weight: 500;
 }
 
 .sparks-container {
@@ -236,6 +280,12 @@ body {
   color: var(--c-1);
 }
 
+.open-source-heading {
+  margin-bottom: 2.5rem;
+  font-weight: 500;
+  color: var(--c-1);
+}
+
 .open-source-contents {
   padding-right: 2rem;
   padding-left: 2rem;
@@ -251,10 +301,21 @@ body {
 }
 
 .footer-contents {
+  display: flex;
+  flex-direction: column;
   padding-right: 2rem;
   padding-left: 2rem;
   margin: 0 auto;
   max-width: var(--w-1);
+}
+
+.auto {
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+.bold {
+  font-weight: 700;
 }
 
 @media only screen and (min-width: 37.5em) {
@@ -308,6 +369,7 @@ body {
   }
 
   .open-source-heading {
+    margin-bottom: 5rem;
     font-size: 2.39rem;
   }
 
