@@ -37,6 +37,11 @@ body {
   color: var(--t);
 }
 
+svg {
+  max-width: 100%;
+  max-height: 100%;
+}
+
 .inline-anchor {
   color: var(--t);
 }
@@ -98,7 +103,6 @@ body {
 
 .bugbot-icon {
   max-width: 5.75rem;
-  max-height: 5.75rem;
   margin: 0 auto;
   margin-bottom: 2.25rem;
 }
@@ -156,8 +160,7 @@ body {
 
 .card {
   display: block;
-  width: 22rem;
-  height: 20rem;
+  max-width: 22rem;
   margin-right: auto;
   margin-left: auto;
   margin-bottom: 2rem;
