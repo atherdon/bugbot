@@ -10,6 +10,10 @@ export default function auth(payload, message, next) {
     github.register((err, link)=> {
       // encode the slack team_id and user_id so we know who to associate this to
       let secret = process.env.SECRET
+
+
+        console.log('GETTING the payload for Amber maybe', payload)
+
       let state  = {user_id:payload.account.user_id, team_id:payload.account.team_id}
       let token  = jwt.sign(state, secret) 
 
