@@ -167,6 +167,7 @@ svg {
   padding: 3rem;
   text-decoration: none;
   background-color: var(--c-0);
+  color: var(--c-3);
   border: 1px solid transparent;
   border-radius: 0.5rem;
 }
