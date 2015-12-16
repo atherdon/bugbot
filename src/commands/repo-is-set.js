@@ -14,14 +14,8 @@ export default function repoIsSet(payload, message, next) {
     let mrkdwn_in = ['text']
     let text = `
 It looks like your Github account is authorized (yay!), but I still need know where to send and receive your Github Issues.
-        
-Please pick a Github repo from the list below, and run the repo command with the org/reponame argument, example:
 
-\`/bugbot repo org/reponame\`
-
-To get a list of Github repos I can use:
-        
-\`/bugbot repos\`
+Please run \`/bugbot repos\` to see your list of available repos, then run the repo command with the org/reponame argument (example: \`/bugbot repo org/reponame\`).
     `
     message({attachments:[{title, color, text, mrkdwn_in}]})
   }
