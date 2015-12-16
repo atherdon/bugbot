@@ -9,10 +9,10 @@ export default function repos(payload, message) {
   github.repos(token, (err, repos)=> {
     // add the repos
     repos.forEach(r=> {
-      text += `- ${r}\n`
+      text += ` • <https://github.com/${r}|${r}>\n`
     })
-    text += 'To change to another repo just run this command:\n'
-    text += '`/bugbot repo org/reponame`'
+    text += '\nTo change to another repo just run this command:\n'
+    text += '`/bugbot repo org/reponame`\n'
     // send the reponse msg
     message({attachments:[
       {text, color, mrkdwn_in}

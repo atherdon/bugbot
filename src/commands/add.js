@@ -17,9 +17,9 @@ export default function addIssueToGithub(payload, message) {
 
       let attachments = [{ 
         title: txt.title, 
-        title_url: issue.url,
+        title_link: issue.url,
         color: '#2FA44F',
-        text: "Please don't forget to add your label, milestone, and assignee by editing the issue on Github.",
+        text: `Please don't forget to add your label, milestone, and assignee by <${issue.url}|editing the issue on Github>.`,
         mrkdwn_in: ['text']
       }]
       
