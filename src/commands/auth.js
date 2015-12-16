@@ -18,11 +18,11 @@ export default function auth(payload, message, next) {
       let title = 'Uh oh, I need you to auth your Github account!'
       let title_link = `${link}&state=${token}`
 
-      let text = 'Hey there, It looks like you haven’t authorized a Github account yet! '
+      let text = 'Hey there, it looks like you haven\'t authorized a Github account yet! '
       text += 'I need to do that in order to work with your Github Issues. '
-      text += `<${link}&state=${token}|Please authorize here>, and I'll be ready for you when you’re back!`
+      text += `<${link}&state=${token}|Please authorize here>, and I'll be ready for you when you're back!`
 
-      let attachments = [{title, color, text, mrkdwn_in}]
+      let attachments = [{title, title_link, color, text, mrkdwn_in}]
 
       message(err? {text:err} : {attachments})
     })

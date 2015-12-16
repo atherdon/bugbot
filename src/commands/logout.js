@@ -8,7 +8,7 @@ export default function logout(payload, message) {
     }
     else {
       // yay message formatting
-      let usr = '`'+ user.login +'`'
+      let usr = '<'+ user.html_url + '|' + user.login +'>'
       let text = `Oh! It's cool, I understand. I've logged out ${usr}. Hope to see you soon!`
       let color = '#E3E4E6'
       let mrkdwn_in = ['text']
