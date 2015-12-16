@@ -439,6 +439,10 @@ svg {
     font-size: 2.39rem;
   }
 
+  .card {
+    max-height: 20rem;
+  }
+
   .reverse {
     flex-direction: row-reverse;
   }
