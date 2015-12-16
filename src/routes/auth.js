@@ -11,11 +11,6 @@ export default function auth(req, res) {
     let team_id      = jwt_token.team_id
     let github_token = gh.access_token
 
-
-      console.log('user_id', user_id)
-      console.log('team_id', team_id)
-      console.log('github_token', github_token)
-
     // find the account in the system
     slack.find({user_id, team_id}, (err, acct)=> {
       // if it exists (or not) write stuff to account obj
@@ -27,7 +22,6 @@ export default function auth(req, res) {
       slack.save(account, err=> {
         let ok = err === null
         let msg = ok? 'Github authorized' : 'Failed to authorize Github'
-        console.log(msg, err)
         let client_id = process.env.SLACK_CLIENT_ID
         res.render(req.app.get('template'), {ok, msg, client_id})
       })
