@@ -37,6 +37,10 @@ body {
   color: var(--t);
 }
 
+.inline-anchor {
+  color: var(--t);
+}
+
 .code {
   padding: 0 0.25rem;
   font-size: 0.9rem;
@@ -126,6 +130,9 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
+}
+
+.row-content {
   margin-bottom: 6rem;
 }
 
@@ -139,14 +146,18 @@ body {
   justify-content: space-between;
 }
 
+.around {
+  justify-content: space-around;
+}
+
 .reverse {
   flex-direction: row;
 }
 
 .card {
   display: block;
-  width: 21.875rem;
-  height: 18.75rem;
+  width: 22rem;
+  height: 20rem;
   margin-right: auto;
   margin-left: auto;
   margin-bottom: 2rem;
@@ -171,19 +182,26 @@ body {
 }
 
 .open-source-icon {
-  max-width: 5.75rem;
-  max-height: 5.75rem;
+  max-width: 5.4375rem;
   margin-right: auto;
   margin-bottom: 1.5rem;
   margin-left: auto;
 }
 
 .bugbot-heading {
-  color: #0193FA;
+  color: #0091FF;
 }
 
 .slack-express-heading {
-  color: #50EC32;
+  color: #E80D70;
+}
+
+.slack-js-heading {
+  color: #18C896;
+}
+
+.slack-ui-heading {
+  color: #880032;
 }
 
 .heading {

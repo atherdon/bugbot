@@ -25,7 +25,7 @@
   <% } else { %>
 
     <section class="notify">
-      <span class="bummer">Oh noes!</span> &nbsp; That was not supposed to happen. Let's try that again.
+      <span class="bummer">Well shoot.</span> &nbsp; Something got messed up. Please try removing Bugbot from your Slack integrations and try again.
     </section>
 
   <% } %>
@@ -42,7 +42,7 @@
         <!-- /build -->
       </div>
       <p class="bugbot-tag">
-        Finally, your Github Issues in Slack
+        Finally, your Github Issues in Slack!
       </p>
       <a
         class="slack-link"
@@ -55,10 +55,10 @@
   </header>
 
   <section class="content">
-    <div class="row between reverse">
+    <div class="row row-content between reverse">
       <div class="row-item">
         <h1 class="heading">
-          Add issues, see your repositories, etc
+          Work out your issues in Slack
         </h1>
         <p class="content-text">
          Switching out of Slack to do a basic thing — like manage our Github Issues — was driving us crazy. So we made Bugbot! Just install it once for you team, and everyone on it can access their issues (and create new ones) from their Github accounts. Just like that.
@@ -69,7 +69,7 @@
         <!-- /build -->
       </div>
     </div>
-    <div class="row between">
+    <div class="row row-content between">
       <div class="row-item">
         <a id="getting-started"></a>
         <h1 class="heading">
@@ -100,7 +100,7 @@
         </div>
       </div>
     </div>
-    <div class="row between reverse">
+    <div class="row row-content between reverse">
       <div class="row-item">
         <h2 class="sub-heading">
           Step 2 - Tell Your Team
@@ -114,7 +114,7 @@
         <!-- /build -->
       </div>
     </div>
-    <div class="row between">
+    <div class="row row-content between">
       <div class="row-item">
         <h2 class="sub-heading">
           Step 3 - Authenticate with Github
@@ -128,7 +128,7 @@
         <!-- /build -->
       </div>
     </div>
-    <div class="row between reverse">
+    <div class="row row-content between reverse">
       <div class="row-item">
         <h2 class="sub-heading">
           Step 4 - Set your repo
@@ -142,7 +142,7 @@
         <!-- /build -->
       </div>
     </div>
-    <div class="row between">
+    <div class="row row-content between">
       <div class="row-item">
         <h2 class="sub-heading">
           Then - Create Github Issues in Slack!
@@ -156,7 +156,7 @@
         <!-- /build -->
       </div>
     </div>
-    <div class="row between reverse">
+    <div class="row row-content between reverse">
       <div class="row-item">
         <h2 class="sub-heading">
           And then - Keep an eye on your Issues
@@ -175,11 +175,11 @@
   <section class="updates">
     <div class="updates-contents">
       <h1 class="updates-heading">
-        We're just getting started
+        We're just getting started!
       </h1>
       <p class="updates-message">
-       Bugbot is a project built by Small Wins, we’re working on some amazing things.
-      </p>
+        Bugbot is made by <a class="inline-anchor" href="https://smallwins.today">Small Wins</a>, and we’ve got some really great things coming. Drop your email in here, we can’t wait to tell you more about what we’re working on!
+    </p>
       <form class="form" action="/email" method="POST">
         <label for="email" class="label">
           <input class="input" type="email" name="email" placeholder="Here's my email">
@@ -189,7 +189,7 @@
         </label>
       </form>
       <p class="worries">
-        Oh and don’t worry, this whole thing has a 0% forecast of spam. 🙌
+        Oh and don’t worry, this whole thing has a 0% forecast of spam. &#128588;
       </p>
     </div>
   </section>
@@ -197,13 +197,15 @@
   <section class="open-source">
     <div class="open-source-contents">
       <h1 class="open-source-heading">
-        Small Wins Open Source Projects
+        More projects by Small Wins
       </h1>
 
-      <div class="row between">
+      <div class="row around">
         <div class="row-item">
           <a class="card" href="https://github.com/smallwins/slack-express">
             <div class="open-source-icon">
+              <!-- build:include ../img/lumberjack_bugbot.svg -->
+              <!-- /build -->
             </div>
             <h1 class="card-heading bugbot-heading">
               Bugbot on Github
@@ -214,8 +216,10 @@
           </a>
         </div>
         <div class="row-item">
-          <a class="card" href="https://github.com/smallwins/slack-express">
+          <a class="card" href="https://github.com/smallwins/bugbot">
             <div class="open-source-icon">
+              <!-- build:include ../img/lumberjack_se.svg -->
+              <!-- /build -->
             </div>
             <h1 class="card-heading slack-express-heading">
               Slack Express
@@ -227,6 +231,36 @@
         </div>
       </div>
 
+      <div class="row around">
+        <div class="row-item">
+          <a class="card" href="https://github.com/smallwins/slack">
+            <div class="open-source-icon">
+              <!-- build:include ../img/lumberjack_slackjs.svg -->
+              <!-- /build -->
+            </div>
+            <h1 class="card-heading slack-js-heading">
+              JS Slack API client
+            </h1>
+            <p class="card-body">
+              Slack API client written in ES2015 JavaScript
+            </p>
+          </a>
+        </div>
+        <div class="row-item">
+          <a class="card" href="https://github.com/smallwins/slack-ui-template">
+            <div class="open-source-icon">
+              <!-- build:include ../img/lumberjack_slacksketch.svg -->
+              <!-- /build -->
+            </div>
+            <h1 class="card-heading slack-ui-heading">
+              Slack UI template
+            </h1>
+            <p class="card-body">
+              Create rapid Sketch mock-ups your Slack interactions with attachments and message formatting
+            </p>
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
