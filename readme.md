@@ -1,7 +1,7 @@
 # :honeybee: Bugbot
 
-[ ![Codeship Status for smallwins/bugbot](https://codeship.com/projects/31f8ea00-7524-0133-c948-4a1a1f122b0d/status?branch=master)](https://codeship.com/projects/117844)
- [![bitHound Score](https://www.bithound.io/projects/badges/704cfb30-8f5a-11e5-9325-0dfe10710dc4/score.svg)](https://www.bithound.io/github/checkplease/bugbot) [![bitHound Dependencies](https://www.bithound.io/projects/badges/704cfb30-8f5a-11e5-9325-0dfe10710dc4/dependencies.svg)](https://www.bithound.io/github/checkplease/bugbot/master/dependencies/npm)
+[ ![Codeship Status for smallwins/bugbot](https://codeship.com/projects/31f8ea00-7524-0133-c948-4a1a1f122b0d/status?branch=master)](https://codeship.com/projects/117844) [![bitHound Code](https://www.bithound.io/github/smallwins/bugbot/badges/code.svg)](https://www.bithound.io/github/smallwins/bugbot) [![bitHound Dependencies](https://www.bithound.io/github/smallwins/bugbot/badges/dependencies.svg)](https://www.bithound.io/github/smallwins/bugbot/master/dependencies/npm)
+
 
 ## Dev setup
 
