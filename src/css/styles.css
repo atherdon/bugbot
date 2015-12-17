@@ -158,6 +158,14 @@ svg {
   flex-direction: row;
 }
 
+.top {
+  align-items: flex-start;
+}
+
+.bottom {
+  align-items: flex-end;
+}
+
 .card {
   display: block;
   max-width: 22rem;
@@ -440,7 +448,7 @@ svg {
   }
 
   .card {
-    max-height: 20rem;
+    max-height: 22rem;
   }
 
   .reverse {
