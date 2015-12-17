@@ -287,8 +287,6 @@ svg {
 }
 
 .form {
-  padding-right: 2.625rem;
-  padding-left: 2.625rem;
   margin-bottom: 1rem;
 }
 
@@ -412,6 +410,11 @@ svg {
   .updates {
     padding-top: 4.125rem;
     padding-bottom: 4.375rem;
+  }
+
+  .form {
+    padding-right: 2.625rem;
+    padding-left: 2.625rem;
   }
 
   .label {
