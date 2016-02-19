@@ -1,6 +1,6 @@
 {
   "name": "bugbot",
-  "version": "1.47.0",
+  "version": "2.0.0",
   "description": "Slack native Github Issues",
   "main": "dist/index.js",
   "scripts": {
