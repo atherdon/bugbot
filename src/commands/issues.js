@@ -8,6 +8,7 @@ export default function repos(payload, message) {
 
   let text = `Okay, hang tight! Sometimes it can take a moment to fetch a lot of issues. (To see all issues, head on over ${link}.)\n`
 
+  console.log('HEY YOU GUYSTH', token, repo)
   github.issues(token, repo, (err, issues)=> {
     // turn the github issues into slack attachments
     let attachments = issues.map(i=> {
