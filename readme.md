@@ -1,4 +1,5 @@
 # :honeybee: Bugbot
+## 🚨 Bugbot is no longer actively maintained. Pull requests are still accepted! 🚨
 
 [ ![Codeship Status for smallwins/bugbot](https://codeship.com/projects/31f8ea00-7524-0133-c948-4a1a1f122b0d/status?branch=master)](https://codeship.com/projects/117844) [![bitHound Code](https://www.bithound.io/github/smallwins/bugbot/badges/code.svg)](https://www.bithound.io/github/smallwins/bugbot) [![bitHound Dependencies](https://www.bithound.io/github/smallwins/bugbot/badges/dependencies.svg)](https://www.bithound.io/github/smallwins/bugbot/master/dependencies/npm)
 
