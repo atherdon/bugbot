@@ -19,7 +19,7 @@
     "cssnano-cli": "^1.0.1",
     "htmlprocessor": "^0.2.6",
     "postcss-cli": "^4.1.1",
-    "postcss-custom-properties": "^8.0.4",
+    "postcss-custom-properties": "^8.0.5",
     "tap-spec": "4.1.1",
     "tape": "^4.2.2"
   },
