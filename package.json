@@ -15,7 +15,7 @@
   "author": "Small Wins",
   "license": "Apache-2.0",
   "devDependencies": {
-    "autoprefixer": "^9.4.1",
+    "autoprefixer": "^9.4.2",
     "cssnano-cli": "^1.0.1",
     "htmlprocessor": "^0.2.6",
     "postcss-cli": "^5.0.0",
